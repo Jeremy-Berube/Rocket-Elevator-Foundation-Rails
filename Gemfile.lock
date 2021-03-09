@@ -354,6 +354,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   faker
+  figaro
   font-awesome-rails
   ibm_watson
   jbuilder (~> 2.5)
