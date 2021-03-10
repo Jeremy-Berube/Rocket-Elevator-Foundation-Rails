@@ -64,5 +64,9 @@ Rails.application.configure do
 
   # Blazer for development environment
   ENV["BLAZER_DATABASE_URL"] = "postgres://codeboxx:Codeboxx1!@codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com/CristianeSantiago"
+  
+  #allows concurrency in the development environment so that we can run our streaming endpoint and still respond to other incoming requests.
+  config.allow_concurrency = true
+
 
 end
