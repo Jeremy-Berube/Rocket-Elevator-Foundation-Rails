@@ -52,8 +52,8 @@ module RailsAdmin
               $amount_columns = 0
               $amount_elevators = 0
 
-              comment = "<h5><FONT color='#073254'>#{building.customer.company_name}</FONT></h4>"	
-              comment += "<h6><FONT color='#941001'>#{address}</FONT></h6>"		
+              comment = "<h5><FONT color='#941001'>#{address}</FONT></h5>"			
+              comment += "<h6><FONT color='#073254'>#{building.customer.company_name}</FONT></h6>"
               comment += "<b>Number of Batteries:</b> #{building.batteries.count}"
 
               building.batteries.each do |battery|

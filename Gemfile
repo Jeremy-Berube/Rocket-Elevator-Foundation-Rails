@@ -36,9 +36,6 @@ gem 'google_maps_service'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-# API Key
-gem 'figaro'
-
 # ADMIN SECTION
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_rollincode', '~> 1.0'
@@ -110,3 +107,22 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Figaro
+gem 'figaro'
+
+#Slack API
+gem 'slack-ruby-client'
+gem 'async-websocket', '~> 0.8.0'
+gem 'slack-incoming-webhooks'
+gem "slack-notifier"
+
+#SendGrid API
+gem 'sendgrid-ruby'
+
+#Twilio API
+gem 'twilio-ruby'
+gem 'sinatra'
+gem 'phonelib'
+
+

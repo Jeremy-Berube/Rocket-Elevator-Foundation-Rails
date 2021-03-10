@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_194634) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "lat"
-    t.float "long"
     t.float "latitude"
     t.float "longitude"
   end
