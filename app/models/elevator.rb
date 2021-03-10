@@ -1,6 +1,7 @@
 
 # require './lib/tasks/send_sms.rb'
 require 'twilio-ruby'
+require 'slack-notifier'
 
 class Elevator < ApplicationRecord
     belongs_to :column
@@ -29,11 +30,7 @@ class Elevator < ApplicationRecord
         to: to,
         body: "The Elevator '#{self.id}', Serial Number '#{self.serial_number}' needs an intervention" 
         )
-
-require 'slack-notifier'
-
-class Elevator < ApplicationRecord
-    belongs_to :column
+    end
     
     around_update :elevator_status_is_changed
     private
