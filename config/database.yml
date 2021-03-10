@@ -12,7 +12,7 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } 
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root  
   password: 
   socket: /tmp/mysql.sock
@@ -54,20 +54,20 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: RailsApp_production
-  username: RailsApp
-  password: <%= ENV['RAILSAPP_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: RailsApp_production
+#   username: RailsApp
+#   password: <%= ENV['RAILSAPP_DATABASE_PASSWORD'] %>
 
-warehouse_development:
-  <<: *postgresql
-  database: warehouse_development
+# warehouse_development:
+#   <<: *postgresql
+#   database: warehouse_development
 
-warehouse_test:
-  <<: *postgresql
-  database: warehouse_test
+# warehouse_test:
+#   <<: *postgresql
+#   database: warehouse_test
 
-warehouse_production:
-  <<: *postgresql
-  url: <%= ENV['WAREHOUSE_DATABASE_URL'] %>
+# warehouse_production:
+#   <<: *postgresql
+#   url: <%= ENV['WAREHOUSE_DATABASE_URL'] %>
