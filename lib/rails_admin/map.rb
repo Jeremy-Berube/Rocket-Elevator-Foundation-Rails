@@ -1,6 +1,5 @@
 require 'geocoder'
 
-
 module RailsAdmin
   module Config
     module Actions
@@ -49,6 +48,26 @@ module RailsAdmin
                   puts data
                   @datas << data
                 end
+
+              $amount_columns = 0
+              $amount_elevators = 0
+
+              comment = "<h5><FONT color='#941001'>#{address}</FONT></h5>"			
+              comment += "<h6><FONT color='#073254'>#{building.customer.company_name}</FONT></h6>"
+              comment += "<b>Number of Batteries:</b> #{building.batteries.count}"
+
+              building.batteries.each do |battery|
+                $amount_columns += battery.columns.count      
+                battery.columns.each do |column|
+                  $amount_elevators += column.elevators.count      
+                end
+              end
+              comment += "<br><b>Number of Columns:</b> #{$amount_columns}"   
+              comment += "<br><b>Number of Elevators:</b> #{$amount_elevators}"   
+              comment += "<br><b>Technical contact:</b> #{building.full_name_of_the_technical_contact_for_the_building}"
+              data[:infowindow] = comment
+              @datas.append(data)
+
               end
             end
           end

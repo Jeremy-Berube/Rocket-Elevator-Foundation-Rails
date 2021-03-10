@@ -36,9 +36,6 @@ gem 'google_maps_service'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-# API Key
-gem 'figaro'
-
 # ADMIN SECTION
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_rollincode', '~> 1.0'
@@ -118,6 +115,8 @@ gem 'figaro'
 gem 'slack-ruby-client'
 gem 'async-websocket', '~> 0.8.0'
 gem 'slack-incoming-webhooks'
+gem "slack-notifier"
+
 
 #SendGrid API
 gem 'sendgrid-ruby'
