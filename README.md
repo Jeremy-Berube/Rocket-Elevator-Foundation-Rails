@@ -92,15 +92,34 @@ SELECT to_char(creation_date, 'YYYY-MM') as "Month"
  group by "Customer";
 
 
-# Life is a Web Service
+
+
+# **Life is a Web Service**
+
+To improve your services and products offering , it is not always necessary to solve all the problems yourself and reinvent the wheel. In reality, many solutions are already available to meet the needs of many products and services such as those offered by Rocket Elevators. A large number of products and services exist today to allow an enriched and optimal experience from the beginning to the end of the value chain.
+During the API week, the participants gathered in a team will have to collaborate to take advantage of seven implementations, which they will make with some of the most used products on the market:
+
+*	Google Maps
+*	Twilio
+*	Slack
+*	DropBox
+*	SendGrid
+*	IBM Watson
+*	ZenDesk
+
+# How it work
+
+# How to install
+
 ![picture](/app/assets/images/maplogo.png)
 
 The Google Maps API is known for its great maturity, performance and geospatial rendering capabilities. It can therefore be used as an extension within our secure back office (reserved for Rocket Elevators employees) in order to geolocate our customers on a map and display statistics on a location:
 
 * *Instruction:*
 1. Install 
-    [Geocoder](https://https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr)
-    
+    [Geocoder](https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr)
+
+    Provides object geocoding (by street or IP address), reverse geocoding (coordinates to street address), distance queries for ActiveRecord and Mongoid, result caching, and more. Designed for Rails but works with Sinatra and other Rack frameworks too.
 
 
 
@@ -109,20 +128,41 @@ The Google Maps API is known for its great maturity, performance and geospatial 
 
 Twilio’s API supports virtually all forms of communication within an application and allows integration of communications between diverse experiences regardless of the platforms on which they were built.
 
+* *Instruction:*
+1. Install 
+    [Twilio](https://github.com/twilio/twilio-ruby)
+
+
+
 # Slack
 ![picture](/app/assets/images/1280px-Slack_Technologies_Logo.svg.png)
 
 The Slack API is very open and flexible, thus Rocket Elevators could greatly benefit from synergy between all of the company's collaborators. The Backoffice in particular may  be able to publish messages on Slack to leave written records and inform about certain events that occur through its infrastructure.
+
+* *Instruction:*
+1. Install 
+    [Slack](https://github.com/slack-ruby/slack-ruby-client)
+
 
 # Dropbox
 ![picture](/app/assets/images/dropbox.png)
 
 Rocket Elevators must be able to archive their documents in the cloud and the Dropbox API and its online storage allows this to be done in a simple and flexible way while allowing access to the file from anywhere thanks to the multiple interfaces provided by Dropbox.
 
+* *Instruction:*
+1. Install 
+    [Dropbox](https://github.com/zendesk/dropbox-api)
+
+
 # Sendgrid
 ![picture](/app/assets/images/SG_Twilio_Lockup_RGBx1.png)
 
 Sendgrid is a historic and essential service provider in the field of email communication. It allows emails to be sent to a base of users who have authorized transactional communications at the time of their registration (Opt-in). Sendgrid builds on a solid reputation as an email processor that guarantees delivery and favorable classification of emails to major suppliers like Google, Microsoft and Yahoo.
+
+* *Instruction:*
+1. Install 
+    [Sengrid](https://github.com/sendgrid/sendgrid-ruby)
+
 
 # IBM Watson
 ![picture](/app/assets/images/ibm-watson-logo.png)
@@ -130,7 +170,17 @@ Sendgrid is a historic and essential service provider in the field of email comm
 IBM through its Artificial Intelligence Watson provides application developers with many services. Among the most used, there is a Text-to-Speech functionality which can be used on a multitude of platforms.
 Rocket Elevators wants to add text-to-speech functionality to their 
 
+* *Instruction:*
+1. Install 
+    [Watson](https://github.com/watson-developer-cloud/ruby-sdk)
+
+
 # ZenDesk
 ![picture](/app/assets/images/zendesk_logo.png)
 
 When the time comes to deliver quality customer service, managing customer requests should never leave a contact unanswered and ensure reasonable processing times. This is often the first of future customers.
+
+* *Instruction:*
+1. Install 
+    [Zendesk](https://github.com/zendesk/zendesk_api_client_rb)
+
