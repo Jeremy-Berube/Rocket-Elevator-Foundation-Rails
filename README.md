@@ -92,3 +92,45 @@ SELECT to_char(creation_date, 'YYYY-MM') as "Month"
  group by "Customer";
 
 
+# Life is a Web Service
+![picture](/app/assets/images/maplogo.png)
+
+The Google Maps API is known for its great maturity, performance and geospatial rendering capabilities. It can therefore be used as an extension within our secure back office (reserved for Rocket Elevators employees) in order to geolocate our customers on a map and display statistics on a location:
+
+* *Instruction:*
+1. Install 
+    [Geocoder](https://https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr)
+    
+
+
+
+# Twilio
+![picture](/app/assets/images/twilio.png)
+
+Twilio’s API supports virtually all forms of communication within an application and allows integration of communications between diverse experiences regardless of the platforms on which they were built.
+
+# Slack
+![picture](/app/assets/images/1280px-Slack_Technologies_Logo.svg.png)
+
+The Slack API is very open and flexible, thus Rocket Elevators could greatly benefit from synergy between all of the company's collaborators. The Backoffice in particular may  be able to publish messages on Slack to leave written records and inform about certain events that occur through its infrastructure.
+
+# Dropbox
+![picture](/app/assets/images/dropbox.png)
+
+Rocket Elevators must be able to archive their documents in the cloud and the Dropbox API and its online storage allows this to be done in a simple and flexible way while allowing access to the file from anywhere thanks to the multiple interfaces provided by Dropbox.
+
+# Sendgrid
+![picture](/app/assets/images/SG_Twilio_Lockup_RGBx1.png)
+
+Sendgrid is a historic and essential service provider in the field of email communication. It allows emails to be sent to a base of users who have authorized transactional communications at the time of their registration (Opt-in). Sendgrid builds on a solid reputation as an email processor that guarantees delivery and favorable classification of emails to major suppliers like Google, Microsoft and Yahoo.
+
+# IBM Watson
+![picture](/app/assets/images/ibm-watson-logo.png)
+
+IBM through its Artificial Intelligence Watson provides application developers with many services. Among the most used, there is a Text-to-Speech functionality which can be used on a multitude of platforms.
+Rocket Elevators wants to add text-to-speech functionality to their 
+
+# ZenDesk
+![picture](/app/assets/images/zendesk_logo.png)
+
+When the time comes to deliver quality customer service, managing customer requests should never leave a contact unanswered and ensure reasonable processing times. This is often the first of future customers.
