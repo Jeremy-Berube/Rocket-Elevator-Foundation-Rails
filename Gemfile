@@ -117,6 +117,7 @@ gem 'async-websocket', '~> 0.8.0'
 gem 'slack-incoming-webhooks'
 gem "slack-notifier"
 
+
 #SendGrid API
 gem 'sendgrid-ruby'
 
@@ -124,5 +125,4 @@ gem 'sendgrid-ruby'
 gem 'twilio-ruby'
 gem 'sinatra'
 gem 'phonelib'
-
 
