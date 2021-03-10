@@ -33,7 +33,7 @@ class LeadsController < ApplicationController
         
         if @lead.save!
             redirect_back fallback_location: root_path, notice: "Your Request was successfully created and sent!"
-            ApplicationMailer.sendgrid_mail.deliver_now
+            ApplicationMailer.sendgrid.deliver_now
         end    
 
 
