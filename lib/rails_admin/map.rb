@@ -57,7 +57,7 @@ module RailsAdmin
                 # puts building.building_details
                 building.building_details.each do |building_detail|
                   if building_detail.information_key == "Number of Floors"
-                    comment += 	"<br><b>Number of Floors:</b> #{building_detail.value}"
+                    comment += "<br><b>Number of Floors:</b> #{building_detail.value}"
                   end
                 end
 
