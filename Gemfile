@@ -28,6 +28,17 @@ gem 'faker'
 # Chartkick
 gem 'chartkick'
 
+# IBM Watson - TTS
+gem 'ibm_watson'
+
+# Google Map
+gem 'google_maps_service'
+gem 'gmaps4rails'
+gem 'geocoder'
+
+# API Key
+gem 'figaro'
+
 # ADMIN SECTION
 gem 'rails_admin', '~> 2.0'
 gem 'rails_admin_rollincode', '~> 1.0'
@@ -115,3 +126,4 @@ gem 'sendgrid-ruby'
 gem 'twilio-ruby'
 gem 'sinatra'
 gem 'phonelib'
+
