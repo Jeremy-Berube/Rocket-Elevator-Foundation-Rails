@@ -99,3 +99,19 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Figaro
+gem 'figaro'
+
+#Slack API
+gem 'slack-ruby-client'
+gem 'async-websocket', '~> 0.8.0'
+gem 'slack-incoming-webhooks'
+
+#SendGrid API
+gem 'sendgrid-ruby'
+
+#Twilio API
+gem 'twilio-ruby'
+gem 'sinatra'
+gem 'phonelib'
