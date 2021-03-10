@@ -126,3 +126,7 @@ gem 'twilio-ruby'
 gem 'sinatra'
 gem 'phonelib'
 
+#Zendesk
+gem 'zendesk_api'
+
+
