@@ -5,6 +5,7 @@ class Elevator < ApplicationRecord
     belongs_to :column
     after_update :send_sms
 
+    #Call method 'message' when an elevator status changes to 'intervention'
     def send_sms
         status = self.status
         if status.upcase == 'INTERVENTION'
@@ -12,6 +13,7 @@ class Elevator < ApplicationRecord
         end
     end
 
+    #Send a Message to Elevators maintenance guy
     def message
         account_sid = ENV['TWILIO_ACCOUNT_SID'] 
         auth_token = ENV['TWILIO_AUTH_TOKEN'] 

@@ -12,7 +12,7 @@ class ApplicationMailer < ActionMailer::Base
     mail.template_id = 'd-bf39ce6313de47df959a129f044fe3cb'
     
     personalization = Personalization.new
-    personalization.add_to(Email.new(email: 'gabriel.rioux@hotmail.com'))
+    personalization.add_to(Email.new(email: lead.email))
 
     mail.add_personalization(personalization)
     # mail.add_content(Content.new(
