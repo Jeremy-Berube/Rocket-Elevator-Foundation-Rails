@@ -33,6 +33,6 @@
   //= require contact
   //= require chartkick
   //= require Chart.bundle
-
+  // require underscore
   //= require gmaps/google
 // })

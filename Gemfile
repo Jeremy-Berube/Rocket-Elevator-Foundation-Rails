@@ -115,6 +115,8 @@ gem 'figaro'
 gem 'slack-ruby-client'
 gem 'async-websocket', '~> 0.8.0'
 gem 'slack-incoming-webhooks'
+gem "slack-notifier"
+
 
 #SendGrid API
 gem 'sendgrid-ruby'
