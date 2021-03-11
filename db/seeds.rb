@@ -83,7 +83,7 @@ puts "Seed Lead"
 
 ext = ['zip', 'pdf', 'jpg', 'png', 'txt']
 
-300.times do
+99.times do
   Lead.create!({
     full_name_of_contact: Faker::Name.name,
     company_name: Faker::Company.name,
