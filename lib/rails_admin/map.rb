@@ -36,6 +36,7 @@ module RailsAdmin
             @datas = []
             
             Building.all.each do |building|
+
                 data= {}
                 address = [building.address.number_and_street, building.address.city, building.address.postal_code, building.address.country, building.address.latitude, building.address.longitude].compact.join(',')
 

@@ -6,6 +6,7 @@ require 'slack-notifier'
 class Elevator < ApplicationRecord
     belongs_to :column
     after_update :send_sms
+    around_update :elevator_status_is_changed
 
     #Call method 'message' when an elevator status changes to 'intervention'
     def send_sms
@@ -21,8 +22,7 @@ class Elevator < ApplicationRecord
         auth_token = ENV['TWILIO_AUTH_TOKEN'] 
         client = Twilio::REST::Client.new(account_sid, auth_token)
 
-        from = '+18198030185'
-        # from = ENV['TWILIO_PHONE_NUMBER']
+        from = ENV['TWILIO_PHONE_NUMBER']
         to = '+18195311787' # Your mobile phone number
 
         client.messages.create(
@@ -31,7 +31,7 @@ class Elevator < ApplicationRecord
         body: "The Elevator '#{self.id}', Serial Number '#{self.serial_number}' needs an intervention" 
         )
     end
-    
+
     around_update :elevator_status_is_changed
     private
     def elevator_status_is_changed
@@ -42,6 +42,6 @@ class Elevator < ApplicationRecord
             notifier.ping "The elevator '#{self.id} with Serial Number '#{self.serial_number} changed status from '#{self.status_was} to '#{self.status}" 
         end
         yield
-
     end
+end
 end
