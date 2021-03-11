@@ -107,15 +107,31 @@ During the API week, the participants gathered in a team will have to collaborat
 *	IBM Watson
 *	ZenDesk
 
-# How it work
+# Introduction to week 7
 
-# How to install
+During the API week, the participants gathered in a team will have to collaborate to take advantage of seven implementations, which they will make with some of the most used products on the market:
+Rocket Elevators' information system continues to evolve. It now has a website, operational functions in its back office and the ability to perform business intelligence using its data warehouse and graphic rendering capabilities of key facts in their context.
+The time has now come to increase the functional capacities of certain sections of the information system in order to:
+1.	Provide a rich experience for website visitors and clients.
+2.	Improve Back Office 
+
+In order to achieve these objectives, the product team has identified certain capabilities offered by APIs (Application Programming Interfaces) published by specialized partners and accessible in SaaS (Software as a Service) mode via subscriptions. The functionalities to be implemented must meet specific requirements.
+
+The Ruby on Rails implementations delivered must serve as the foundation for this new iteration of the information system.
+
+
+# The Requierement
 
 ![picture](/app/assets/images/maplogo.png)
 
-The Google Maps API is known for its great maturity, performance and geospatial rendering capabilities. It can therefore be used as an extension within our secure back office (reserved for Rocket Elevators employees) in order to geolocate our customers on a map and display statistics on a location:
+**The Google Maps API** is known for its great maturity, performance and geospatial rendering capabilities. It can therefore be used as an extension within our secure back office (reserved for Rocket Elevators employees) in order to geolocate our customers on a map and display statistics on a location:
 
 * *Instruction:*
+
+The geolocation page must be a page in the Admin section of the website, available only to authenticated members.
+The addresses table of the database, if it is not already the case, must now include real addresses, geolocalizable by Google Maps.
+
+
 1. Install 
     [Geocoder](https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr)
 
@@ -126,7 +142,7 @@ The Google Maps API is known for its great maturity, performance and geospatial 
 # Twilio
 ![picture](/app/assets/images/twilio.png)
 
-Twilio’s API supports virtually all forms of communication within an application and allows integration of communications between diverse experiences regardless of the platforms on which they were built.
+**Twilio’s API** supports virtually all forms of communication within an application and allows integration of communications between diverse experiences regardless of the platforms on which they were built.
 
 * *Instruction:*
 1. Install 
@@ -137,7 +153,7 @@ Twilio’s API supports virtually all forms of communication within an applicati
 # Slack
 ![picture](/app/assets/images/1280px-Slack_Technologies_Logo.svg.png)
 
-The Slack API is very open and flexible, thus Rocket Elevators could greatly benefit from synergy between all of the company's collaborators. The Backoffice in particular may  be able to publish messages on Slack to leave written records and inform about certain events that occur through its infrastructure.
+**The Slack API** is very open and flexible, thus Rocket Elevators could greatly benefit from synergy between all of the company's collaborators. The Backoffice in particular may  be able to publish messages on Slack to leave written records and inform about certain events that occur through its infrastructure.
 
 * *Instruction:*
 1. Install 
@@ -147,7 +163,7 @@ The Slack API is very open and flexible, thus Rocket Elevators could greatly ben
 # Dropbox
 ![picture](/app/assets/images/dropbox.png)
 
-Rocket Elevators must be able to archive their documents in the cloud and the Dropbox API and its online storage allows this to be done in a simple and flexible way while allowing access to the file from anywhere thanks to the multiple interfaces provided by Dropbox.
+Rocket Elevators must be able to archive their documents in the cloud and the **Dropbox API** and its online storage allows this to be done in a simple and flexible way while allowing access to the file from anywhere thanks to the multiple interfaces provided by Dropbox.
 
 * *Instruction:*
 1. Install 
@@ -157,7 +173,7 @@ Rocket Elevators must be able to archive their documents in the cloud and the Dr
 # Sendgrid
 ![picture](/app/assets/images/SG_Twilio_Lockup_RGBx1.png)
 
-Sendgrid is a historic and essential service provider in the field of email communication. It allows emails to be sent to a base of users who have authorized transactional communications at the time of their registration (Opt-in). Sendgrid builds on a solid reputation as an email processor that guarantees delivery and favorable classification of emails to major suppliers like Google, Microsoft and Yahoo.
+**Sendgrid** is a historic and essential service provider in the field of email communication. It allows emails to be sent to a base of users who have authorized transactional communications at the time of their registration (Opt-in). Sendgrid builds on a solid reputation as an email processor that guarantees delivery and favorable classification of emails to major suppliers like Google, Microsoft and Yahoo.
 
 * *Instruction:*
 1. Install 
@@ -167,7 +183,7 @@ Sendgrid is a historic and essential service provider in the field of email comm
 # IBM Watson
 ![picture](/app/assets/images/ibm-watson-logo.png)
 
-IBM through its Artificial Intelligence Watson provides application developers with many services. Among the most used, there is a Text-to-Speech functionality which can be used on a multitude of platforms.
+IBM through its Artificial Intelligence **Watson** provides application developers with many services. Among the most used, there is a Text-to-Speech functionality which can be used on a multitude of platforms.
 Rocket Elevators wants to add text-to-speech functionality to their 
 
 * *Instruction:*
