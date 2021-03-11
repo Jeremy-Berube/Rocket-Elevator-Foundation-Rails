@@ -1,7 +1,5 @@
-require 'zendesk_api'
-
 class Lead < ApplicationRecord
-
+    require 'zendesk_api'
     after_create :zendesk_lead_ticket
 
     def zendesk_lead_ticket
