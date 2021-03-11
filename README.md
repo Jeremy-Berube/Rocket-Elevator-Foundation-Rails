@@ -107,22 +107,22 @@ During the API week, the participants gathered in a team will have to collaborat
 *	IBM Watson
 *	ZenDesk
 
-# Introduction to week 7
+# Introduction to week 7 (API WEEK)
 
 During the API week, the participants gathered in a team will have to collaborate to take advantage of seven implementations, which they will make with some of the most used products on the market:
-Rocket Elevators' information system continues to evolve. It now has a website, operational functions in its back office and the ability to perform business intelligence using its data warehouse and graphic rendering capabilities of key facts in their context.
+**Rocket Elevators' information system** continues to evolve. It now has a website, operational functions in its back office and the ability to perform business intelligence using its data warehouse and graphic rendering capabilities of key facts in their context.
 The time has now come to increase the functional capacities of certain sections of the information system in order to:
 1.	Provide a rich experience for website visitors and clients.
-2.	Improve Back Office 
+2.	Improve **Back Office** 
 
-In order to achieve these objectives, the product team has identified certain capabilities offered by APIs (Application Programming Interfaces) published by specialized partners and accessible in SaaS (Software as a Service) mode via subscriptions. The functionalities to be implemented must meet specific requirements.
+In order to achieve these objectives, the product team has identified certain capabilities offered by APIs (**Application Programming Interfaces**) published by specialized partners and accessible in SaaS (Software as a Service) mode via subscriptions. The functionalities to be implemented must meet specific requirements.
 
 The Ruby on Rails implementations delivered must serve as the foundation for this new iteration of the information system.
 
 
 # The Requierement
 
-![picture](/app/assets/images/maplogo.png)
+![picture](/app/assets/images/mapsmale.jpg)
 
 **The Google Maps API** is known for its great maturity, performance and geospatial rendering capabilities. It can therefore be used as an extension within our secure back office (reserved for Rocket Elevators employees) in order to geolocate our customers on a map and display statistics on a location:
 
@@ -131,13 +131,29 @@ The Ruby on Rails implementations delivered must serve as the foundation for thi
 The geolocation page must be a page in the Admin section of the website, available only to authenticated members.
 The addresses table of the database, if it is not already the case, must now include real addresses, geolocalizable by Google Maps.
 
+* *To Access:*
+    
+    * On  the Rocket Elevators pages:
 
+        * log in to: MY ACCOUNT
+
+            - with user name: admin@admin.com
+            - with Password: password
+
+    This will give you access to the BackOffice Dashboard.
+
+    * Click on *Map*
+
+    You have now access to the location and details on our clients indicated by marker. You will also notice the actual weather on the specific marker.
+
+**How we did it**
 1. Install 
     [Geocoder](https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr)
 
     Provides object geocoding (by street or IP address), reverse geocoding (coordinates to street address), distance queries for ActiveRecord and Mongoid, result caching, and more. Designed for Rails but works with Sinatra and other Rack frameworks too.
+2. Creating [API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
-
+    The API key is a unique identifier that authenticates requests associated with your project for usage and billing purposes. You must have at least one API key associated with your project
 
 # Twilio
 ![picture](/app/assets/images/twilio.png)
@@ -151,7 +167,7 @@ The addresses table of the database, if it is not already the case, must now inc
 
 
 # Slack
-![picture](/app/assets/images/1280px-Slack_Technologies_Logo.svg.png)
+![picture](/app/assets/images/slacksmall.png)
 
 **The Slack API** is very open and flexible, thus Rocket Elevators could greatly benefit from synergy between all of the company's collaborators. The Backoffice in particular may  be able to publish messages on Slack to leave written records and inform about certain events that occur through its infrastructure.
 
@@ -171,7 +187,7 @@ Rocket Elevators must be able to archive their documents in the cloud and the **
 
 
 # Sendgrid
-![picture](/app/assets/images/SG_Twilio_Lockup_RGBx1.png)
+![picture](/app/assets/images/sengridsmall.png)
 
 **Sendgrid** is a historic and essential service provider in the field of email communication. It allows emails to be sent to a base of users who have authorized transactional communications at the time of their registration (Opt-in). Sendgrid builds on a solid reputation as an email processor that guarantees delivery and favorable classification of emails to major suppliers like Google, Microsoft and Yahoo.
 
@@ -181,7 +197,7 @@ Rocket Elevators must be able to archive their documents in the cloud and the **
 
 
 # IBM Watson
-![picture](/app/assets/images/ibm-watson-logo.png)
+![picture](/app/assets/images/watsonsmall.jpg)
 
 IBM through its Artificial Intelligence **Watson** provides application developers with many services. Among the most used, there is a Text-to-Speech functionality which can be used on a multitude of platforms.
 Rocket Elevators wants to add text-to-speech functionality to their 
@@ -192,7 +208,7 @@ Rocket Elevators wants to add text-to-speech functionality to their
 
 
 # ZenDesk
-![picture](/app/assets/images/zendesk_logo.png)
+![picture](/app/assets/images/Zendesk_Buddha.jpeg)
 
 When the time comes to deliver quality customer service, managing customer requests should never leave a contact unanswered and ensure reasonable processing times. This is often the first of future customers.
 
