@@ -1,4 +1,4 @@
-require 'geocoder'
+
 
 module RailsAdmin
   module Config
@@ -36,25 +36,22 @@ module RailsAdmin
             @datas = []
             
             Building.all.each do |building|
-              data= {}
-              address = [building.address.number_and_street, building.address.city, building.address.postal_code, building.address.country].compact.join(',')
-              if Geocoder.search(address).length > 0 
-                get_coordinates = Geocoder.search(address)
-                puts get_coordinates
-                if get_coordinates.first.coordinates.length > 0 
 
-                  data[:lat] = get_coordinates.first.coordinates[0]
-                  data[:lng] = get_coordinates.first.coordinates[1]
-                  puts data
-                  @datas << data
-                end
+                data= {}
+                address = [building.address.number_and_street, building.address.city, building.address.postal_code, building.address.country, building.address.latitude, building.address.longitude].compact.join(',')
+
+                data[:lat] = building.address.latitude
+                data[:lng] = building.address.longitude
+                puts data
+                @datas << data
+
 
                 number_columns = 0
                 number_elevators = 0
 
 
-                comment = "<br><b>Address:</b><FONT color='#941001'> #{address}</FONT>"
-                # puts building.building_details
+                comment = "<br><b>Address:</b><FONT color='#941001'> #{building.address.number_and_street}</FONT>"
+                
                 building.building_details.each do |building_detail|
                   if building_detail.information_key == "Number of Floors"
                     comment += "<br><b>Number of Floors:</b> #{building_detail.value}"
@@ -75,7 +72,7 @@ module RailsAdmin
                 comment += "<br><b>Technical contact:</b> #{building.full_name_of_the_technical_contact_for_the_building}"
                 data[:infowindow] = comment
                 @datas.append(data)
-              end
+              
             end
           end
         end
