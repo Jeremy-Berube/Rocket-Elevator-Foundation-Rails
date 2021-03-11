@@ -192,10 +192,10 @@ class LeadsController < ApplicationController
                           valign='top'
                           bgcolor=''>
                           <div>
-                <div style='font-family: inherit; text-align: inherit'><strong>Greetings #{lead_params[:full_name_of_contact]}</strong></div>
+                <div style='font-family: inherit; text-align: inherit'><strong>Greetings #{lead_params[:full_name_of_contact.capitalize]}</strong></div>
                 
                 <div style='font-family: inherit; text-align: inherit'><br>
-                We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project #{lead_params[:project_name]}.</div>
+                We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project #{lead_params[:project_name.capitalize]}.</div>
                 
                 <div style='font-family: inherit; text-align: inherit'><br>
                 A representative from our team will be in touch with you very soon. We look forward to demonstrating the value of our solutions and helping you choose the appropriate product given your requirements.</div>
