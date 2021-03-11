@@ -33,6 +33,7 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
+
             @data_recolector = []
 
             Building.all.each do |building|

@@ -132,4 +132,8 @@ gem 'phonelib'
 #Zendesk
 gem 'zendesk_api'
 
+#dropbox
+gem 'dropbox_api'
 
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
