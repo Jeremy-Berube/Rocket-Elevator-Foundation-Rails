@@ -40,7 +40,7 @@ module RailsAdmin
               address = [building.address.number_and_street, building.address.city, building.address.postal_code, building.address.country].compact.join(',')
               if Geocoder.search(address).length > 0 
                 get_coordinates = Geocoder.search(address)
-                
+                puts get_coordinates
                 if get_coordinates.first.coordinates.length > 0 
 
                   data[:lat] = get_coordinates.first.coordinates[0]
