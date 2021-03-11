@@ -8,18 +8,23 @@ Cristiane Santiago -
 Lionel Niyongabire -
 Eric Moran
  
-🎯 About
-Week 4 - The main goal of this week is to transform the static site previously developed during the Genesis program and turn it into a web application on MVC (Model - View - Controller) foundations. The site must be in a state that allows you to create a new section that saves the Javascript form that calculates an estimate in the form of a purchase order.
+# About
+*Week 4* 
+- The main goal of this week is to transform the static site previously developed during the Genesis program and turn it into a web application on MVC (Model - View - Controller) foundations. The site must be in a state that allows you to create a new section that saves the Javascript form that calculates an estimate in the form of a purchase order.
 Expanding the relational database model
 Seeding data base with data NB: real address are used
 
-Week 5 - During this week, participants are exposed to a more elaborate data model and must perform basic query exercises. They will be asked to create tables, alter them and extend the concepts managed by their information system.
+*Week 5* 
+- During this week, participants are exposed to a more elaborate data model and must perform basic query exercises. They will be asked to create tables, alter them and extend the concepts managed by their information system.
 Two types of databases will be requested for this exercise
-a- A relational database
-b- A data warehouse for decision-making
+
+  a- A relational database
+
+  b- A data warehouse for decision-making
+
  
  
-📌 Instructions to acces to the admin panel:
+## Instructions to acces to the admin panel:
 
 To login as Admin:
 1. Navigation bar : My Account
@@ -32,7 +37,7 @@ To login as Employee:
 2. Password: codeboxx1
  
  
-📌 Gems used:
+## Gems used:
 1. gem 'bootstrap', '~> 5.0.0.beta1'
 2. gem 'jquery-rails'
 3. gem "font-awesome-rails"
@@ -47,51 +52,29 @@ To login as Employee:
 12. gem 'blazer'
 
 
-📌 The queries in mysql:
-1. Employee
-2. Users
-3. Quote
-4. Address
-5. Battery
-6. Building
-7. Building Details (Extention Building)
-8. Column
-9. Customer
-10. Elevator
-11. Lead
+## The three queries:
 
-📌 The queries in postgres:
-1. Fact Quote
-2. Fact Contact
-3. Fact Elevator
-4. Dim Customer
+- How many contact requests are made per month?
 
-
-📚 The three queries:
-
---How many contact requests are made per month?
-
-SELECT to_char(creation_date, 'YYYY-MM') as "Month"
+    SELECT to_char(creation_date, 'YYYY-MM') as "Month"
       ,count(contact_id) as ContactPerMonth
   FROM public.fact_contacts
  group by "Month"
  order by "Month" desc;
 
---How many bid solicitations are made per month?
+- How many bid solicitations are made per month?
 
-SELECT to_char(creation_date, 'YYYY-MM') as "Month"
+    SELECT to_char(creation_date, 'YYYY-MM') as "Month"
       ,count(quote_id) as QuotePerMonth
   FROM public.fact_quotes
  group by "Month"
  order by "Month" desc;
 
---How many elevators per customer do we have?
+- How many elevators per customer do we have?
 
- SELECT customer_id as "Customer", count(id) as ElevPerCustomers
+    SELECT customer_id as "Customer", count(id) as ElevPerCustomers
   FROM public.fact_elevators
  group by "Customer";
-
-
 
 
 # **Life is a Web Service**
@@ -99,13 +82,13 @@ SELECT to_char(creation_date, 'YYYY-MM') as "Month"
 To improve your services and products offering , it is not always necessary to solve all the problems yourself and reinvent the wheel. In reality, many solutions are already available to meet the needs of many products and services such as those offered by Rocket Elevators. A large number of products and services exist today to allow an enriched and optimal experience from the beginning to the end of the value chain.
 During the API week, the participants gathered in a team will have to collaborate to take advantage of seven implementations, which they will make with some of the most used products on the market:
 
-*	Google Maps
-*	Twilio
-*	Slack
-*	DropBox
-*	SendGrid
-*	IBM Watson
-*	ZenDesk
+     *	Google Maps
+     *	Twilio
+     *	Slack
+     *	DropBox
+     *	SendGrid
+     *	IBM Watson
+     *	ZenDesk
 
 # Introduction to week 7 (API WEEK)
 
@@ -195,6 +178,14 @@ Rocket Elevators must be able to archive their documents in the cloud and the **
 1. Install 
     [Sengrid](https://github.com/sendgrid/sendgrid-ruby)
 
+For Rocket Elevators, one use case to implement is sending a thank you email automatically when a contact completes the "Contact Us" form on the Rocket Elevators website. The form is saved with the email field to use. When saving to the database, a transactional thank-you email must be sent with the text below:
+Greetings [Full Name]
+We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project [Project Name].
+A representative from our team will be in touch with you very soon. We look forward to demonstrating the value of our solutions and helping you choose the appropriate product given your requirements.
+We’ll Talk soon
+The Rocket Team
+The email must also contain the logo and overall design of Rocket Elevators.
+
 
 # IBM Watson
 ![picture](/app/assets/images/watsonsmall.jpg)
@@ -206,6 +197,27 @@ Rocket Elevators wants to add text-to-speech functionality to their
 1. Install 
     [Watson](https://github.com/watson-developer-cloud/ruby-sdk)
 
+    Rocket Elevators wants to add text-to-speech functionality to their Home Dashboard (/ admin). We must have the option to start the every time the Admin Dashboard page appears.
+The type of information that speech synthesis allows are the following:
+
+       1.Greetings to the logged users
+       2.There are currently XXX elevators deployed in the XXX buildings of your XXX customers
+       3.Currently, XXX elevators are not in Running Status and are being serviced
+       4.	You currently have XXX quotes awaiting processing
+       5.	You currently have XXX leads in your contact requests
+       6.	XXX Batteries are deployed across XXX cities
+
+* *To Access:*
+        
+    You will need to create an account in [Watson text-to-speech](https://www.ibm.com/cloud/watson-text-to-speech?p1=Search&p4=43700057522849808&p5=e&gclid=Cj0KCQiAnKeCBhDPARIsAFDTLTJAGF9fs9KEOWVFGQXU3KAGvLFfi7FN-l2nYzCVCeOXafqYHXEhrnwaAmm9EALw_wcB&gclsrc=aw.ds)
+
+    * to login:
+
+    Email:rocket_elevator12345@outlook.com
+
+    password: codeboxx1  
+
+from there, you willhave access to the Watson dashboard enabling you to control the API
 
 # ZenDesk
 ![picture](/app/assets/images/Zendesk_Buddha.jpeg)
@@ -220,5 +232,28 @@ When the time comes to deliver quality customer service, managing customer reque
 
 * *To Access:*
 
-    Log in to your Zendesk 
+    Log in to your Zendesk account, this is where the actual Zendesk Dashboard wil be found.
+    
+    Email: rocket_elevator12345@outlook.com
 
+    password: codeboxx1
+
+
+1.	The website's “Contact Us” form creates a new “Question” type ticket in ZenDesk
+2.	The website's “Get a Quote” form creates a new “Task” type ticket in ZenDesk
+3.	The tickets created are visible in the ZenDesk Console and it is possible to respond to them or even manage a workflow for these contacts.
+The content of each ticket created must include the contact information which has been stored in the database:
+Subject: [Full Name] from [Company Name]
+Comment: The contact [Full Name] from company [Company Name] can be reached at email  [E-Mail Address] and at phone number [Phone]. [Department] has a project named [Project Name] which would require contribution from Rocket Elevators. 
+[Project Description]
+Attached Message: [Message]
+The Contact uploaded an attachment
+
+
+# By Team Week 7
+
+- Gabriel Rioux : team leader
+- Eric Moran
+- Tatiana Ramirez
+- Jeremy Berube
+- Eric Turcotte
