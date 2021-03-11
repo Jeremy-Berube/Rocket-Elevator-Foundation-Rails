@@ -216,5 +216,9 @@ When the time comes to deliver quality customer service, managing customer reque
 1. Install 
     [Zendesk ruby gems](https://github.com/zendesk/zendesk_api_client_rb)
 
-You will need to open an account with Zendesk. To do so, visit:  [Zendesk.com](https://www.zendesk.com/?utm_source=google&utm_medium=Search-Paid&utm_network=g&utm_campaign=SE_AW_AM_CA_EN_N_Sup_Brand_TM_Alpha_D_H&matchtype=e&utm_term=zendesk%20api&utm_content=472670451081&utm_adgroup=&gclsrc=aw.ds&&gclid=Cj0KCQiA-aGCBhCwARIsAHDl5x-ONLWiuqKW30zsRZe6Occu73cinaG3MOcHkR3p27_jPob_wudtmBsaAu6HEALw_wcB)
+    You will need to open an account with Zendesk. To do so, visit:  [Zendesk.com](https://www.zendesk.com/?utm_source=google&utm_medium=Search-Paid&utm_network=g&utm_campaign=SE_AW_AM_CA_EN_N_Sup_Brand_TM_Alpha_D_H&matchtype=e&utm_term=zendesk%20api&utm_content=472670451081&utm_adgroup=&gclsrc=aw.ds&&gclid=Cj0KCQiA-aGCBhCwARIsAHDl5x-ONLWiuqKW30zsRZe6Occu73cinaG3MOcHkR3p27_jPob_wudtmBsaAu6HEALw_wcB)
+
+* *To Access:*
+
+    Log in to your Zendesk 
 
