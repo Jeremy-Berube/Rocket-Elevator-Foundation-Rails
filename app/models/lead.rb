@@ -12,13 +12,16 @@ class Lead < ApplicationRecord
         :subject => "#{self.full_name_of_contact} from #{self.company_name}",
         :comment => {
             :value => 
-            "The contact #{self.full_name_of_contact} from #{self.company_name} can be reached at email#{self.email} and at phone number #{self.phone}
+            "The contact #{self.full_name_of_contact} from #{self.company_name} can be reached at #{self.email} and at phone number #{self.phone}
             #{self.department_in_charge_of_elevators} has a project named #{self.project_name} which would require contribution from Rocket Elevators.
             
-            #{self.project_description}
+            Projet Description : #{self.project_description}
 
-            #{self.message}."
-
+            Attached message : #{self.message}.
+            
+            The Contact uploaded an attachment           
+            "
+            
         },
         :requester => {
             "name": self.full_name_of_contact,

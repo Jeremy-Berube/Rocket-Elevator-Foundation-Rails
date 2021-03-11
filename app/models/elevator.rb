@@ -1,6 +1,7 @@
 
 # require './lib/tasks/send_sms.rb'
 require 'twilio-ruby'
+require 'slack-notifier'
 
 class Elevator < ApplicationRecord
     belongs_to :column
@@ -31,8 +32,7 @@ class Elevator < ApplicationRecord
         )
     end
 
-    require 'slack-notifier'
-    
+    around_update :elevator_status_is_changed
     private
     def elevator_status_is_changed
         notify = self.status_changed?
@@ -43,4 +43,5 @@ class Elevator < ApplicationRecord
         end
         yield
     end
+end
 end
