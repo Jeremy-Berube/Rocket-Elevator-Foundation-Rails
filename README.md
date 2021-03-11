@@ -27,29 +27,31 @@ Two types of databases will be requested for this exercise
 ## Instructions to acces to the admin panel:
 
 To login as Admin:
+
 1. Navigation bar : My Account
 2. Login
 3. Username: admin@admin.com
 4. Password: password
 
 To login as Employee:
-1. Username: Email of any employee
-2. Password: codeboxx1
+
+     1. Username: Email of any employee
+     2. Password: codeboxx1
  
  
 ## Gems used:
-1. gem 'bootstrap', '~> 5.0.0.beta1'
-2. gem 'jquery-rails'
-3. gem "font-awesome-rails"
-4. gem 'devise'
-5. gem 'rails_admin', '~> 2.0'
-6. gem 'toastr-rails'
-7. gem 'cancancan'
-8. gem 'rails_admin_rollincode', '~> 1.0'
-9. gem 'chartkick'
-10. gem 'faker'
-11. gem 'multiverse'
-12. gem 'blazer'
+    1. gem 'bootstrap', '~> 5.0.0.beta1'
+    2. gem 'jquery-rails'
+    3. gem "font-awesome-rails"
+    4. gem 'devise'
+    5. gem 'rails_admin', '~> 2.0'
+    6. gem 'toastr-rails'
+    7. gem 'cancancan'
+    8. gem 'rails_admin_rollincode', '~> 1.0'
+    9. gem 'chartkick'
+    10. gem 'faker'
+    11. gem 'multiverse'
+    12. gem 'blazer'
 
 
 ## The three queries:
