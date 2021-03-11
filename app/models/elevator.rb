@@ -44,4 +44,3 @@ class Elevator < ApplicationRecord
         yield
     end
 end
-end
