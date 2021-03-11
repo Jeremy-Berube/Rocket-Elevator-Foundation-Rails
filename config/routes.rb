@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "quotes" => "pages#quote"
 
   get "/index" => "pages#index"
-  get "/map.html.erb" => "rails_admin/main#map"
+
   # /quotes is the action from the form in quote.html.erb
   post "/quotes" => "quotes#create"
 

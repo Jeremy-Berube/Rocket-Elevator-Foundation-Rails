@@ -1,4 +1,4 @@
-# require Rails.root.join('lib', 'rails_admin', 'map.rb')
+require Rails.root.join('lib', 'rails_admin', 'map.rb')
 require Rails.root.join('lib', 'rails_admin', 'watson.rb')
 
 RailsAdmin.config do |config|
@@ -19,7 +19,6 @@ RailsAdmin.config do |config|
   config.navigation_static_label = "Graphs"
   config.navigation_static_links = {
     'Charts' => '/blazer',
-    'Maps' => '/map.html.erb',
   }
 
   ## == Pundit ==
@@ -45,7 +44,7 @@ RailsAdmin.config do |config|
     delete
     #show_in_app
     watson
-    # map
+    map
     ## With an audit adapter, you can add:
     # history_index
     # history_show

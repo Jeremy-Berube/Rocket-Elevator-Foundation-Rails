@@ -1,5 +1,4 @@
 # require 'open_weather'
-require 'geocoder'
 
 module RailsAdmin
   module Config
@@ -34,88 +33,42 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-            @datas = []
-            
+            @data_recolector = []
+
             Building.all.each do |building|
-              data= {}
-                
-              if building.address.latitude != "" || building.address.longitude != "" 
-                address = [building.address.number_and_street, building.address.city, building.address.postal_code, building.address.country, building.address.latitude, building.address.longitude].compact.join(',')
-                data[:lat] = building.address.latitude
-                data[:lng] = building.address.longitude
-                puts data
-                @datas << data
+              data = []
 
-                number_columns = 0
-                number_elevators = 0
+              data[0] = building.address.latitude
+              data[1] = building.address.longitude
 
-                comment = "<br><b>Address:</b><FONT color='#941001'> #{building.address.number_and_street}</FONT>"
-                  
-                building.building_details.each do |building_detail|
-                  if building_detail.information_key == "Number of Floors"
-                    comment += "<br><b>Number of Floors:</b> #{building_detail.value}"
-                  end
+              address = "#{building.address.number_and_street}, #{building.address.city}, #{building.address.postal_code}, #{building.address.country}"
+              amount_columns = 0
+              amount_elevators = 0
+
+              info = "<br><b>Address:</b><FONT color='#941001'> #{building.address.number_and_street}, #{building.address.city}, #{building.address.postal_code},</FONT>"	
+
+              building.building_details.each do |building_detail|
+                if building_detail.information_key == "Number of Floors"
+                  info += "<br><b>Number of Floors:</b> #{building_detail.value}"
                 end
+              end
 
-                comment += "<br><b>Company Name:</b><FONT color='#073254'> #{building.customer.company_name}</FONT>"
-                comment += "<br><b>Number of Batteries:</b> #{building.batteries.count}"
-
-                building.batteries.each do |battery|
-                  number_columns += battery.columns.count      
-                  battery.columns.each do |column|
-                    number_elevators += column.elevators.count      
-                  end
+              info += "<br><b>Company Name:</b><FONT color='#073254'> #{building.customer.company_name}</FONT>"
+              info += "<br><b>Number of Batteries:</b> #{building.batteries.count}"
+              
+              building.batteries.each do |battery|
+                amount_columns += battery.columns.count      
+                battery.columns.each do |column|
+                  amount_elevators += column.elevators.count      
                 end
-                comment += "<br><b>Number of Columns:</b> #{number_columns}"   
-                comment += "<br><b>Number of Elevators:</b> #{number_elevators}"   
-                comment += "<br><b>Technical contact:</b> #{building.full_name_of_the_technical_contact_for_the_building}"
-                data[:infowindow] = comment
-                @datas.append(data)
+              end
+              
+              info += "<br><b>Number of Columns:</b> #{amount_columns}"   
+              info += "<br><b>Number of Elevators:</b> #{amount_elevators}"   
+              info += "<br><b>Technical contact:</b> #{building.full_name_of_the_technical_contact_for_the_building}"
 
-
-              else
-                address = [building.address.number_and_street, building.address.city, building.address.postal_code, building.address.country].compact.join(',')
-                if Geocoder.search(address).length > 0 
-                  get_coordinates = Geocoder.search(address)
-                  
-                  if get_coordinates.first.coordinates.length > 0 
-
-                    data[:lat] = get_coordinates.first.coordinates[0]
-                    data[:lng] = get_coordinates.first.coordinates[1]
-                    puts data
-                    @datas << data
-
-                    number_columns = 0
-                    number_elevators = 0
-                    
-                    
-                    comment = "<br><b>Address:</b><FONT color='#941001'> #{building.address.number_and_street}</FONT>"
-                      
-                    building.building_details.each do |building_detail|
-                      if building_detail.information_key == "Number of Floors"
-                        comment += "<br><b>Number of Floors:</b> #{building_detail.value}"
-                      end
-                    end
-
-                    comment += "<br><b>Company Name:</b><FONT color='#073254'> #{building.customer.company_name}</FONT>"
-                    comment += "<br><b>Number of Batteries:</b> #{building.batteries.count}"
-
-                    building.batteries.each do |battery|
-                      number_columns += battery.columns.count      
-                      battery.columns.each do |column|
-                        number_elevators += column.elevators.count      
-                      end
-                    end
-                    comment += "<br><b>Number of Columns:</b> #{number_columns}"   
-                    comment += "<br><b>Number of Elevators:</b> #{number_elevators}"   
-                    comment += "<br><b>Technical contact:</b> #{building.full_name_of_the_technical_contact_for_the_building}"
-                    data[:infowindow] = comment
-                    @datas.append(data)
-                    
-                  end
-
-                end
-              end                  
+              data[2] = info
+              @data_recolector << data
             end
           end
         end
