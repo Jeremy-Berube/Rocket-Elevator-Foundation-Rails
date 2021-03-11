@@ -2146,7 +2146,7 @@ end
 puts "Seed Quote"
 
 #---------------------------### Residential ###---------------------------
-75.times do 
+15.times do 
 
   num_of_floors = Faker::Number.between(from: 2, to: 60)
   num_of_apartments = Faker::Number.between(from: 5, to: 150)
@@ -2194,7 +2194,7 @@ puts "Seed Quote"
   })
 end
 #---------------------------### Commercial ###---------------------------
-75.times do
+15.times do
 
   num_of_floors = Faker::Number.between(from: 2, to: 60)
   num_of_elevator_cages = Faker::Number.between(from: 1, to: 20)
@@ -2240,7 +2240,7 @@ end
   })
 end
 #---------------------------### Corporate/Hybrid ###---------------------------
-150.times do
+15.times do
 
   num_of_floors = Faker::Number.between(from: 2, to: 60)
   num_of_basements = Faker::Number.between(from: 2, to: 6)
@@ -2412,7 +2412,7 @@ puts "Seed Lead"
 
 ext = ['zip', 'pdf', 'jpg', 'png', 'txt']
 
-99.times do
+45.times do
   Lead.create!({
     full_name_of_contact: Faker::Name.name,
     company_name: Faker::Company.name,
