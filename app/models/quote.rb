@@ -24,7 +24,7 @@ class Quote < ApplicationRecord
         },
         :requester => {
             "name": self.contact_name,
-            "email": self.email
+            # "email": self.email
         },
         :priority => "high",
         :type => "task"

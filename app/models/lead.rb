@@ -19,13 +19,12 @@ class Lead < ApplicationRecord
 
             Attached message : #{self.message}.
             
-            The Contact uploaded an attachment           
-            "
+            The Contact uploaded an attachment."
             
         },
         :requester => {
             "name": self.full_name_of_contact,
-            "email": self.email
+            # "email": self.email
         },
         :priority => "normal",
         :type => "question"
