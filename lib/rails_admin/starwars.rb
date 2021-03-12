@@ -41,6 +41,7 @@ module RailsAdmin
             text_to_speech = TextToSpeechV1.new(
               authenticator: authenticator
             )
+<<<<<<< HEAD
             quote1 = "Yoda is not a Muppet."
             quote2 = "Ewok was never spoken in the original trilogy.The word Ewok is never uttered by a character in the original trilogy. Although, the species is identified in the script and closing credits."
             quote3 = "Boba Fett's face is actually visible in the original movies.You may think you never see Boba Fett's face in the original trilogy, but the actor who played Fett, Jeremy Bulloch, did stand in for an Imperial officer at the last minute"
@@ -49,6 +50,8 @@ module RailsAdmin
 
             random_quotes = [quote1, quote2, quote3, quote4, quote5].sample
 
+=======
+>>>>>>> main
             text_to_speech.service_url = "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/c9e0f5e1-d276-4fd3-8cc4-fc8616591942"
             puts text_to_speech
             File.open("app/assets/audios/starwars.mp3" , "wb") do |audio_file|
