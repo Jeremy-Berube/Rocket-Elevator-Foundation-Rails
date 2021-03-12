@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   # Authenticates Blazer Using Devise
-  authenticate :user, ->(user) { user.superadmin_role? } do
+  authenticate :user, ->(user) { user.employee_role? } do
     mount Blazer::Engine, at: "blazer"
   end
 
