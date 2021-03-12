@@ -41,11 +41,19 @@ module RailsAdmin
             text_to_speech = TextToSpeechV1.new(
               authenticator: authenticator
             )
-            text_to_speech.service_url = "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/256a7c50-6f05-4f1d-b6e3-55104f134aac"
+            quote1 = "Yoda is not a Muppet."
+            quote2 = "Ewok was never spoken in the original trilogy.The word Ewok is never uttered by a character in the original trilogy. Although, the species is identified in the script and closing credits."
+            quote3 = "Boba Fett's face is actually visible in the original movies.You may think you never see Boba Fett's face in the original trilogy, but the actor who played Fett, Jeremy Bulloch, did stand in for an Imperial officer at the last minute"
+            quote4 = "I have a bad feeling about this became a running gag for the franchise.The phrase I have a bad feeling about this or I have a very bad feeling about this is said in every Star Wars movie"
+            quote5 = "Return of the Jedi almost had a very different ending.In a story development session for Return of the Jedi, George Lucas toyed with the idea that after Luke removes dying Vader's helmet, he puts it on, proclaims Now I am Vader and turns to the dark side"
+
+            random_quotes = [quote1, quote2, quote3, quote4, quote5].sample
+
+            text_to_speech.service_url = "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/c9e0f5e1-d276-4fd3-8cc4-fc8616591942"
             puts text_to_speech
             File.open("app/assets/audios/starwars.mp3" , "wb") do |audio_file|
               quotes = text_to_speech.synthesize(
-                text: Faker::Movies::StarWars.quote,
+                text: random_quotes,
                 accept: "audio/mp3",
                 voice: "en-US_MichaelV3Voice"
               ).result 
