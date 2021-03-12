@@ -1,4 +1,4 @@
-# require 'open_weather'
+require 'open_weather'
 
 module RailsAdmin
   module Config
@@ -33,7 +33,6 @@ module RailsAdmin
 
         register_instance_option :controller do
           proc do
-
             @data_recolector = []
 
             Building.all.each do |building|
@@ -46,6 +45,12 @@ module RailsAdmin
               amount_columns = 0
               amount_elevators = 0
 
+              options = { units: "metric", APPID: ENV['OPEN_WEATHER_API'] }
+              weather = OpenWeather::Current.geocode(data[0], data[1] , options)
+
+              temp = weather.dig("main", "temp")
+              feels_like = weather.dig("main", "feels_like")
+              
               info = "<br><b>Address:</b><FONT color='#941001'> #{building.address.number_and_street}, #{building.address.city}, #{building.address.postal_code},</FONT>"	
 
               building.building_details.each do |building_detail|
@@ -67,6 +72,7 @@ module RailsAdmin
               info += "<br><b>Number of Columns:</b> #{amount_columns}"   
               info += "<br><b>Number of Elevators:</b> #{amount_elevators}"   
               info += "<br><b>Technical contact:</b> #{building.full_name_of_the_technical_contact_for_the_building}"
+              info += "<br><b>Current weather:</b> #{temp}°C, feels like #{feels_like}°C"
 
               data[2] = info
               @data_recolector << data

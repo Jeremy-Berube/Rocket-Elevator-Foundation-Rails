@@ -141,4 +141,7 @@ gem 'dropbox_api'
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
 
+# Weather
+gem 'open-weather'
+
 
