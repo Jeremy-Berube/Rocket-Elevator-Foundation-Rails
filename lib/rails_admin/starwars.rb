@@ -41,7 +41,7 @@ module RailsAdmin
             text_to_speech = TextToSpeechV1.new(
               authenticator: authenticator
             )
-            text_to_speech.service_url = "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/256a7c50-6f05-4f1d-b6e3-55104f134aac"
+            text_to_speech.service_url = "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/c9e0f5e1-d276-4fd3-8cc4-fc8616591942"
             puts text_to_speech
             File.open("app/assets/audios/starwars.mp3" , "wb") do |audio_file|
               quotes = text_to_speech.synthesize(
