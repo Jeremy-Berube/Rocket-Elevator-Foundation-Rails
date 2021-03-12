@@ -36,8 +36,6 @@ gem 'google_maps_service'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-# Weather
-gem 'open-weather'
 
 # ADMIN SECTION
 gem 'rails_admin', '~> 2.0'
