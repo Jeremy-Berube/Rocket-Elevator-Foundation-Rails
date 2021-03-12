@@ -2142,6 +2142,117 @@ Address.all.each do |address|
 end
 
 
+puts "Seed User, Lead, Customer, Building, BuildingDetail, Battery, Column and Elevator"
+
+#Auxiliary BuildingDetail variables
+typeList = ["Residential", "Commercial", "Corporate", "Hybrid"]
+typeArchitecture = ["Neoclassical", "Victorian", "Modern", "Neofuturist"]
+
+
+50.times do 
+#-----------------------------------------------### Seed User ###-------------------------------------------------
+    current_user = User.create!({
+      email: Faker::Internet.unique.email, 
+      password: 'password'
+    })
+    
+#-----------------------------------------------### Seed Customer ###-------------------------------------------------
+    current_customer = Customer.create!({
+      user_id: current_user.id,
+      address_id: addressListCustomer.sample,
+      customers_creation_date: Faker::Date.between(from: '1976-02-23', to: '2021-02-23'),
+      company_name: Faker::Company.unique.name,
+      full_name_of_company_contact: Faker::Name.unique.name,
+      company_contact_phone: Faker::PhoneNumber.unique.cell_phone,
+      email_of_company_contact: Faker::Internet.unique.email,
+      company_description: Faker::Lorem.unique.paragraph,
+      full_name_of_service_technical_authority: Faker::Name.unique.name,
+      technical_authority_phone_for_service_: Faker::PhoneNumber.unique.cell_phone,
+      technical_manager_email_for_service: Faker::Internet.unique.email
+    })
+
+#-----------------------------------------------### Seed Building ###-------------------------------------------------
+    current_building = Building.create!({
+      customer_id: current_customer.id,
+      address_id: addressListBuilding.sample,
+      full_name_of_the_building_administrator: Faker::Name.unique.name,
+      email_of_the_administrator_of_the_building: Faker::Internet.unique.email,
+      phone_number_of_the_building_administrator: Faker::PhoneNumber.unique.cell_phone,
+      full_name_of_the_technical_contact_for_the_building: Faker::Name.unique.name,
+      technical_contact_email_for_the_building: Faker::Internet.unique.email,
+      technical_contact_phone_for_the_building: Faker::PhoneNumber.unique.cell_phone,
+    })
+
+#-----------------------------------------------### Seed BuildingDetail ###-------------------------------------------------
+    BuildingDetail.create!(
+        information_key: "Type",
+        value: typeList.sample,
+        building_id: current_building.id
+    )
+    BuildingDetail.create!(
+        information_key: "Construction Year",
+        value: Faker::Date.between(from: '1950-01-01', to: '2020-02-25'),
+        building_id: current_building.id
+    )
+    BuildingDetail.create!(
+        information_key: "Architecture",
+        value: typeArchitecture.sample,
+        building_id: current_building.id
+    )
+    BuildingDetail.create!(
+        information_key: "Last Renovation Year",
+        value: Faker::Date.between(from: '1991-09-23', to: '2010-09-25'),
+        building_id: current_building.id
+    )
+    BuildingDetail.create!(
+        information_key: "Number of Floors",
+        value: Faker::Number.between(from: 3, to: 60),
+        building_id: current_building.id
+    )
+
+#-----------------------------------------------### Seed Battery ###-------------------------------------------------
+    current_battery = Battery.create!({
+      building_id: current_building.id,
+      building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
+      status: [:Active, :intervation, :Inactive].sample,
+      employee_id: Employee.order('rand()').limit(1).first.id,
+      date_of_commissioning: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
+      date_of_last_inspection: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
+      certificate_of_operations: Faker::Alphanumeric.unique.alphanumeric(number: 10),
+      information: Faker::Lorem.sentence(word_count: 3),
+      notes: Faker::Lorem.unique.paragraph
+    })
+
+#-----------------------------------------------### Seed Column ###-------------------------------------------------
+    numRand = rand(1..3)
+    numRand.times do 
+      current_column = Column.create!({
+        battery_id: current_battery.id,
+        building_type: current_battery.building_type,
+        number_of_floors_served: Faker::Number.between(from: 2, to: 60),
+        status: [:Active, :Intervention, :Inactive].sample,
+        information: Faker::Lorem.sentence(word_count: 3),
+        notes: Faker::Lorem.unique.paragraph
+      })
+
+#-----------------------------------------------### Seed Elevator ###-------------------------------------------------
+        rand(1..3).times do
+          Elevator.create!({
+            column_id: current_column.id,
+            serial_number: Faker::Alphanumeric.unique.alphanumeric(number: 15),
+            model: [:Standard, :Premium, :Excelium].sample,
+            building_type: current_battery.building_type,
+            status: [:Active, :Intervention, :Inactive].sample,
+            date_of_commissioning: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
+            date_of_last_inspection: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
+            certificate_of_inspection: Faker::Alphanumeric.unique.alphanumeric(number: 15),
+            information: Faker::Lorem.sentence(word_count: 3),
+            notes: Faker::Lorem.unique.paragraph
+          })
+        end
+    end    
+end
+
 #-----------------------------------------------### Seed Quote ###-------------------------------------------------
 puts "Seed Quote"
 
@@ -2294,125 +2405,12 @@ end
 end
 #-----------------------------------------------### END Seed Quote ###-------------------------------------------------
 
-
-puts "Seed User, Lead, Customer, Building, BuildingDetail, Battery, Column and Elevator"
-
-#Auxiliary BuildingDetail variables
-typeList = ["Residential", "Commercial", "Corporate", "Hybrid"]
-typeArchitecture = ["Neoclassical", "Victorian", "Modern", "Neofuturist"]
-
-
-50.times do 
-#-----------------------------------------------### Seed User ###-------------------------------------------------
-    current_user = User.create!({
-      email: Faker::Internet.unique.email, 
-      password: 'password'
-    })
-    
-#-----------------------------------------------### Seed Customer ###-------------------------------------------------
-    current_customer = Customer.create!({
-      user_id: current_user.id,
-      address_id: addressListCustomer.sample,
-      customers_creation_date: Faker::Date.between(from: '1976-02-23', to: '2021-02-23'),
-      company_name: Faker::Company.unique.name,
-      full_name_of_company_contact: Faker::Name.unique.name,
-      company_contact_phone: Faker::PhoneNumber.unique.cell_phone,
-      email_of_company_contact: Faker::Internet.unique.email,
-      company_description: Faker::Lorem.unique.paragraph,
-      full_name_of_service_technical_authority: Faker::Name.unique.name,
-      technical_authority_phone_for_service_: Faker::PhoneNumber.unique.cell_phone,
-      technical_manager_email_for_service: Faker::Internet.unique.email
-    })
-
-#-----------------------------------------------### Seed Building ###-------------------------------------------------
-    current_building = Building.create!({
-      customer_id: current_customer.id,
-      address_id: addressListBuilding.sample,
-      full_name_of_the_building_administrator: Faker::Name.unique.name,
-      email_of_the_administrator_of_the_building: Faker::Internet.unique.email,
-      phone_number_of_the_building_administrator: Faker::PhoneNumber.unique.cell_phone,
-      full_name_of_the_technical_contact_for_the_building: Faker::Name.unique.name,
-      technical_contact_email_for_the_building: Faker::Internet.unique.email,
-      technical_contact_phone_for_the_building: Faker::PhoneNumber.unique.cell_phone,
-    })
-
-#-----------------------------------------------### Seed BuildingDetail ###-------------------------------------------------
-    BuildingDetail.create!(
-        information_key: "Type",
-        value: typeList.sample,
-        building_id: current_building.id
-    )
-    BuildingDetail.create!(
-        information_key: "Construction Year",
-        value: Faker::Date.between(from: '1950-01-01', to: '2020-02-25'),
-        building_id: current_building.id
-    )
-    BuildingDetail.create!(
-        information_key: "Architecture",
-        value: typeArchitecture.sample,
-        building_id: current_building.id
-    )
-    BuildingDetail.create!(
-        information_key: "Last Renovation Year",
-        value: Faker::Date.between(from: '1991-09-23', to: '2010-09-25'),
-        building_id: current_building.id
-    )
-    BuildingDetail.create!(
-        information_key: "Number of Floors",
-        value: Faker::Number.between(from: 3, to: 60),
-        building_id: current_building.id
-    )
-
-#-----------------------------------------------### Seed Battery ###-------------------------------------------------
-    current_battery = Battery.create!({
-      building_id: current_building.id,
-      building_type: [:Residential, :Commercial, :Corporate, :Hybrid].sample,
-      status: [:Active, :intervation, :Inactive].sample,
-      employee_id: Employee.order('rand()').limit(1).first.id,
-      date_of_commissioning: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
-      date_of_last_inspection: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
-      certificate_of_operations: Faker::Alphanumeric.unique.alphanumeric(number: 10),
-      information: Faker::Lorem.sentence(word_count: 3),
-      notes: Faker::Lorem.unique.paragraph
-    })
-
-#-----------------------------------------------### Seed Column ###-------------------------------------------------
-    numRand = rand(1..3)
-    numRand.times do 
-      current_column = Column.create!({
-        battery_id: current_battery.id,
-        building_type: current_battery.building_type,
-        number_of_floors_served: Faker::Number.between(from: 2, to: 60),
-        status: [:Active, :Intervention, :Inactive].sample,
-        information: Faker::Lorem.sentence(word_count: 3),
-        notes: Faker::Lorem.unique.paragraph
-      })
-
-#-----------------------------------------------### Seed Elevator ###-------------------------------------------------
-        rand(1..3).times do
-          Elevator.create!({
-            column_id: current_column.id,
-            serial_number: Faker::Alphanumeric.unique.alphanumeric(number: 15),
-            model: [:Standard, :Premium, :Excelium].sample,
-            building_type: current_battery.building_type,
-            status: [:Active, :Intervention, :Inactive].sample,
-            date_of_commissioning: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
-            date_of_last_inspection: Faker::Date.between(from: '2018-02-23', to: '2021-02-23'),
-            certificate_of_inspection: Faker::Alphanumeric.unique.alphanumeric(number: 15),
-            information: Faker::Lorem.sentence(word_count: 3),
-            notes: Faker::Lorem.unique.paragraph
-          })
-        end
-    end    
-end
-
-
 #-----------------------------------------------### Seed Lead ###-------------------------------------------------
 puts "Seed Lead"
 
 ext = ['zip', 'pdf', 'jpg', 'png', 'txt']
 
-45.times do
+30.times do
   Lead.create!({
     full_name_of_contact: Faker::Name.name,
     company_name: Faker::Company.name,
