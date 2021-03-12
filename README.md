@@ -1,97 +1,12 @@
-Rocket_Elevators_Information_System
-🚀	Working with MVC (Model-View-Controller)	📈
 
-Members of this week's team
-Abdul Akeeb -
-Ahsan Syed -
-Cristiane Santiago -
-Lionel Niyongabire -
-Eric Moran
- 
-🎯 About
-Week 4 - The main goal of this week is to transform the static site previously developed during the Genesis program and turn it into a web application on MVC (Model - View - Controller) foundations. The site must be in a state that allows you to create a new section that saves the Javascript form that calculates an estimate in the form of a purchase order.
-Expanding the relational database model
-Seeding data base with data NB: real address are used
-
-Week 5 - During this week, participants are exposed to a more elaborate data model and must perform basic query exercises. They will be asked to create tables, alter them and extend the concepts managed by their information system.
-Two types of databases will be requested for this exercise
-a- A relational database
-b- A data warehouse for decision-making
- 
- 
-📌 Instructions to acces to the admin panel:
+## Instructions to acces to the admin panel:
 
 To login as Admin:
+
 1. Navigation bar : My Account
 2. Login
-3. Username: admin@admin.com
-4. Password: password
-
-To login as Employee:
-1. Username: Email of any employee
-2. Password: codeboxx1
- 
- 
-📌 Gems used:
-1. gem 'bootstrap', '~> 5.0.0.beta1'
-2. gem 'jquery-rails'
-3. gem "font-awesome-rails"
-4. gem 'devise'
-5. gem 'rails_admin', '~> 2.0'
-6. gem 'toastr-rails'
-7. gem 'cancancan'
-8. gem 'rails_admin_rollincode', '~> 1.0'
-9. gem 'chartkick'
-10. gem 'faker'
-11. gem 'multiverse'
-12. gem 'blazer'
-
-
-📌 The queries in mysql:
-1. Employee
-2. Users
-3. Quote
-4. Address
-5. Battery
-6. Building
-7. Building Details (Extention Building)
-8. Column
-9. Customer
-10. Elevator
-11. Lead
-
-📌 The queries in postgres:
-1. Fact Quote
-2. Fact Contact
-3. Fact Elevator
-4. Dim Customer
-
-
-📚 The three queries:
-
---How many contact requests are made per month?
-
-SELECT to_char(creation_date, 'YYYY-MM') as "Month"
-      ,count(contact_id) as ContactPerMonth
-  FROM public.fact_contacts
- group by "Month"
- order by "Month" desc;
-
---How many bid solicitations are made per month?
-
-SELECT to_char(creation_date, 'YYYY-MM') as "Month"
-      ,count(quote_id) as QuotePerMonth
-  FROM public.fact_quotes
- group by "Month"
- order by "Month" desc;
-
---How many elevators per customer do we have?
-
- SELECT customer_id as "Customer", count(id) as ElevPerCustomers
-  FROM public.fact_elevators
- group by "Customer";
-
-
+3. Username: nicolas.genest@codeboxx.biz
+4. Password: codeboxx1
 
 
 # **Life is a Web Service**
@@ -99,15 +14,17 @@ SELECT to_char(creation_date, 'YYYY-MM') as "Month"
 To improve your services and products offering , it is not always necessary to solve all the problems yourself and reinvent the wheel. In reality, many solutions are already available to meet the needs of many products and services such as those offered by Rocket Elevators. A large number of products and services exist today to allow an enriched and optimal experience from the beginning to the end of the value chain.
 During the API week, the participants gathered in a team will have to collaborate to take advantage of seven implementations, which they will make with some of the most used products on the market:
 
-*	Google Maps
-*	Twilio
-*	Slack
-*	DropBox
-*	SendGrid
-*	IBM Watson
-*	ZenDesk
+     *	Google Maps
+     *	Twilio
+     *	Slack
+     *	DropBox
+     *	SendGrid
+     *	IBM Watson
+     *	ZenDesk
 
 # Introduction to week 7 (API WEEK)
+
+![picture](/app/assets/images/rocketbonus.png)
 
 During the API week, the participants gathered in a team will have to collaborate to take advantage of seven implementations, which they will make with some of the most used products on the market:
 **Rocket Elevators' information system** continues to evolve. It now has a website, operational functions in its back office and the ability to perform business intelligence using its data warehouse and graphic rendering capabilities of key facts in their context.
@@ -137,8 +54,8 @@ The addresses table of the database, if it is not already the case, must now inc
 
         * log in to: MY ACCOUNT
 
-            - with user name: admin@admin.com
-            - with Password: password
+            - with user name: nicolas.genest@codeboxx.biz
+            - with Password: codeboxx1
 
     This will give you access to the BackOffice Dashboard.
 
@@ -148,7 +65,7 @@ The addresses table of the database, if it is not already the case, must now inc
 
 **How we did it**
 1. Install 
-    [Geocoder](https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr)
+    [Geocoder gem](https://rubygems.org/gems/geocoder/versions/1.3.7?locale=fr) 
 
     Provides object geocoding (by street or IP address), reverse geocoding (coordinates to street address), distance queries for ActiveRecord and Mongoid, result caching, and more. Designed for Rails but works with Sinatra and other Rack frameworks too.
 2. Creating [API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
@@ -162,8 +79,13 @@ The addresses table of the database, if it is not already the case, must now inc
 
 * *Instruction:*
 1. Install 
-    [Twilio](https://github.com/twilio/twilio-ruby)
+    [Twilio gem](https://github.com/twilio/twilio-ruby) 
 
+2. Creating [API key](https://www.twilio.com/docs/iam/keys/api-key-resource)
+
+For Rocket Elevators, Twilio can be used to allow the platform to get in touch with the technicians in case of problems.
+If the status of an Elevator in the database changes to "Intervention" status, the building's technical contact must be identified and an SMS must be sent to the telephone number associated with this contact.
+In this case, the designated contact must be the coach assigned to each team, and he must receive the alerts on his mobile phone.
 
 
 # Slack
@@ -175,6 +97,13 @@ The addresses table of the database, if it is not already the case, must now inc
 1. Install 
     [Slack](https://github.com/slack-ruby/slack-ruby-client)
 
+2. Creating [API key](https://slack.com/intl/fr-ca/help/articles/215770388-Cr%C3%A9er-et-r%C3%A9actualiser-un-jeton-API)
+
+
+In the current use case, when a controller changes the status of an elevator, this status is reflected in the information system and persists in the operational database . When these status changes occur, a message is sent to the slack “elevator_operations” channel to leave a written record.
+The written message must have the following format:
+The Elevator [Elevator’s ID] with Serial Number [Serial Number] changed status from [Old Status] to [New Status]
+
 
 # Dropbox
 ![picture](/app/assets/images/dropbox.png)
@@ -183,17 +112,42 @@ Rocket Elevators must be able to archive their documents in the cloud and the **
 
 * *Instruction:*
 1. Install 
-    [Dropbox](https://github.com/zendesk/dropbox-api)
+    [Dropbox gem](https://github.com/zendesk/dropbox-api) 
+
+2. Creating [API key](https://www.dropbox.com/developers/documentation/http/documentation)
+
+    * to login:
+
+    Email:rocket_elevator12345@outlook.com
+
+    password: codeboxx1 
+
+When a contact becomes a customer, that is to say when the “Customers” table in the information system can be linked to a record in the “Leads” table, which itself offers the possibility of uploading files in a binary field of the table, it is necessary to trigger an archiving procedure which:
+
+    1.	Connect to the Rocket Elevators DropBox account
+    2.	Create a directory in DropBox on behalf of the client if the client does not already exist
+    3.	Extract the file stored in the binary field of the MySQL database
+    4.	Copy this file to the client DropBox directory
+    5.	If the document is successfully downloaded to Dropbox, the controller deletes the content of the binary field from the database to avoid duplication
 
 
 # Sendgrid
 ![picture](/app/assets/images/sengridsmall.png)
 
+
 **Sendgrid** is a historic and essential service provider in the field of email communication. It allows emails to be sent to a base of users who have authorized transactional communications at the time of their registration (Opt-in). Sendgrid builds on a solid reputation as an email processor that guarantees delivery and favorable classification of emails to major suppliers like Google, Microsoft and Yahoo.
 
 * *Instruction:*
 1. Install 
-    [Sengrid](https://github.com/sendgrid/sendgrid-ruby)
+    [Sengrid gem](https://github.com/sendgrid/sendgrid-ruby)
+
+For Rocket Elevators, one use case to implement is sending a thank you email automatically when a contact completes the "Contact Us" form on the Rocket Elevators website. The form is saved with the email field to use. When saving to the database, a transactional thank-you email must be sent with the text below:
+Greetings [Full Name]
+We thank you for contacting Rocket Elevators to discuss the opportunity to contribute to your project [Project Name].
+A representative from our team will be in touch with you very soon. We look forward to demonstrating the value of our solutions and helping you choose the appropriate product given your requirements.
+We’ll Talk soon
+The Rocket Team
+The email must also contain the logo and overall design of Rocket Elevators.
 
 
 # IBM Watson
@@ -204,8 +158,34 @@ Rocket Elevators wants to add text-to-speech functionality to their
 
 * *Instruction:*
 1. Install 
-    [Watson](https://github.com/watson-developer-cloud/ruby-sdk)
+    [Watson gem](https://github.com/watson-developer-cloud/ruby-sdk) 
 
+    Rocket Elevators wants to add text-to-speech functionality to their Home Dashboard (/ admin). We must have the option to start the every time the Admin Dashboard page appears.
+The type of information that speech synthesis allows are the following:
+
+       1.Greetings to the logged users
+       2.There are currently XXX elevators deployed in the XXX buildings of your XXX customers
+       3.Currently, XXX elevators are not in Running Status and are being serviced
+       4.	You currently have XXX quotes awaiting processing
+       5.	You currently have XXX leads in your contact requests
+       6.	XXX Batteries are deployed across XXX cities
+
+    To provide the type of voice summary described, it is necessary to execute the appropriate queries in the database to collect the relevant data. Then form sentences in English and combine them with the data collected.
+
+
+2. Creating [API key](https://developer.ibm.com/technologies/iot/tutorials/iot-generate-apikey-apitoken/)
+
+* *To Access:*
+        
+    You will need to create an account in [Watson text-to-speech](https://www.ibm.com/cloud/watson-text-to-speech?p1=Search&p4=43700057522849808&p5=e&gclid=Cj0KCQiAnKeCBhDPARIsAFDTLTJAGF9fs9KEOWVFGQXU3KAGvLFfi7FN-l2nYzCVCeOXafqYHXEhrnwaAmm9EALw_wcB&gclsrc=aw.ds)
+
+    * to login:
+
+    Email:rocket_elevator12345@outlook.com
+
+    password: codeboxx1  
+
+from there, you will have access to the Watson dashboard enabling you to control the API
 
 # ZenDesk
 ![picture](/app/assets/images/Zendesk_Buddha.jpeg)
@@ -220,5 +200,68 @@ When the time comes to deliver quality customer service, managing customer reque
 
 * *To Access:*
 
-    Log in to your Zendesk 
+    Log in to your Zendesk account, this is where the actual Zendesk Dashboard wil be found.
+    
+    Email: rocket_elevator12345@outlook.com
 
+    password: codeboxx1
+
+
+1.	The website's “Contact Us” form creates a new “Question” type ticket in ZenDesk
+2.	The website's “Get a Quote” form creates a new “Task” type ticket in ZenDesk
+3.	The tickets created are visible in the ZenDesk Console and it is possible to respond to them or even manage a workflow for these contacts.
+The content of each ticket created must include the contact information which has been stored in the database:
+Subject: [Full Name] from [Company Name]
+Comment: The contact [Full Name] from company [Company Name] can be reached at email  [E-Mail Address] and at phone number [Phone]. [Department] has a project named [Project Name] which would require contribution from Rocket Elevators. 
+[Project Description]
+Attached Message: [Message]
+The Contact uploaded an attachment
+
+2. Creating [API key](https://support.zendesk.com/hc/fr/articles/226022787-G%C3%A9n%C3%A9ration-d-un-nouveau-token-API)
+
+
+## Gems add for Week 7:
+    * gem 'ibm_watson'
+    * gem 'google_maps_service'
+    * gem 'gmaps4rails'
+    * gem 'geocoder'
+    * gem 'rails', '~> 5.2.4', '>= 5.2.4.5'
+    * gem 'mysql2', '>= 0.4.4', '< 0.6.0'
+    * gem 'pg', '>= 0.18', '< 2.0'
+    * gem 'puma', '~> 3.11'
+    * gem 'uglifier', '>= 1.3.0'
+    * gem 'coffee-rails', '~> 4.2'
+    * gem 'jbuilder', '~> 2.5'
+    * gem 'bootsnap', '>= 1.1.0', require: false
+    * gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+    * gem 'web-console', '>= 3.3.0'
+    * gem 'listen', '>= 3.0.5', '< 3.2'
+    * gem 'spring'
+    * gem 'spring-watcher-listen', '~> 2.0.0'
+    * gem 'capistrano', '~> 3.10', require: false
+    * gem 'capistrano-rails', '~> 1.4', require: false
+    * gem 'capistrano-bundler', '>= 1.1.0'
+    * gem 'rvm1-capistrano3', require: false
+    * gem 'capistrano3-puma'
+    * gem 'capybara', '>= 2.15'
+    * gem 'selenium-webdriver'
+    * gem 'chromedriver-helper'
+    * gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+    * gem 'figaro'
+    * gem 'slack-ruby-client'
+    * gem 'async-websocket', '~> 0.8.0'
+    * gem 'slack-incoming-webhooks'
+    * gem "slack-notifier"
+    * gem 'sendgrid-ruby'
+    * gem 'twilio-ruby'
+    * gem 'sinatra'
+    * gem 'phonelib'
+    * gem 'zendesk_api'
+
+# By Team Week 7
+
+- Gabriel Rioux : team leader
+- Eric Moran
+- Tatiana Ramirez
+- Jeremy Berube
+- Eric Turcotte
