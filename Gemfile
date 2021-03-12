@@ -129,4 +129,6 @@ gem 'phonelib'
 #Zendesk
 gem 'zendesk_api'
 
+#spotify
+gem 'rspotify'
 
