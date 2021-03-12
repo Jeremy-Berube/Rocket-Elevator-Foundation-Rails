@@ -130,8 +130,13 @@ gem 'phonelib'
 #Zendesk
 gem 'zendesk_api'
 
+
+#spotify
+gem 'rspotify'
+
 #dropbox
 gem 'dropbox_api'
+
 
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
