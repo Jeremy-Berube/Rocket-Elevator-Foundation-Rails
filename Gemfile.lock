@@ -438,6 +438,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   async-websocket (~> 0.8.0)
