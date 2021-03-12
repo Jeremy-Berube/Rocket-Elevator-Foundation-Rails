@@ -143,4 +143,3 @@ gem 'bcrypt_pbkdf'
 
 # Weather
 gem 'open-weather'
-
