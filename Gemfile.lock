@@ -441,7 +441,10 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dropbox_api
+<<<<<<< Updated upstream
   ed25519
+=======
+>>>>>>> Stashed changes
   faker
   figaro
   font-awesome-rails
