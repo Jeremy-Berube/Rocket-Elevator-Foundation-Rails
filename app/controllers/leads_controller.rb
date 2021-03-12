@@ -38,8 +38,40 @@ class LeadsController < ApplicationController
         if @lead.save!
             redirect_back fallback_location: root_path, notice: "Your Request was successfully created and sent!"
             sendgrid()
+            zendesk_lead_ticket()
         end    
     end 
+
+    require 'zendesk_api'
+
+    def zendesk_lead_ticket
+        client = ZendeskAPI::Client.new do |config|
+            config.url = ENV['ZENDESK_URL']
+            config.username = ENV['ZENDESK_USERNAME']
+            config.token = ENV['ZENDESK_TOKEN']
+        end
+        ZendeskAPI::Ticket.create!(client, 
+        :subject => "#{@lead.full_name_of_contact} from #{@lead.company_name}",
+        :comment => {
+            :value => 
+            "The contact #{@lead.full_name_of_contact} from #{@lead.company_name} can be reached at #{@lead.email} and at phone number #{@lead.phone}
+            #{@lead.department_in_charge_of_elevators} has a project named #{@lead.project_name} which would require contribution from Rocket Elevators.
+            
+            Projet Description : #{@lead.project_description}
+
+            Attached message : #{@lead.message}.
+            
+            The Contact uploaded an attachment."
+            
+        },
+        :requester => {
+            "name": @lead.full_name_of_contact,
+            # "email": @lead.email
+        },
+        :priority => "normal",
+        :type => "question"
+        )
+    end
 
     def sendgrid
         mail = SendGrid::Mail.new
