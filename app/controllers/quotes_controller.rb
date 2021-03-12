@@ -149,11 +149,40 @@ class QuotesController < ApplicationController
 
     if @quote.save
       redirect_back fallback_location: root_path, notice: "Your Quote was successfully created and sent!"
+      zendesk_quote_ticket()
     end
 
   end # End for def Create
 
+  require 'zendesk_api'
 
+    def zendesk_quote_ticket
+        client = ZendeskAPI::Client.new do |config|
+            config.url = ENV['ZENDESK_URL']
+            config.username = ENV['ZENDESK_USERNAME']
+            config.token = ENV['ZENDESK_TOKEN']
+        end
+        ZendeskAPI::Ticket.create!(client, 
+        :subject => "#{@quote.contact_name.capitalize} from #{@quote.company_name.capitalize}",
+        :comment => {
+            :value => "The contact #{@quote.contact_name.capitalize} from #{@quote.company_name.capitalize} can be reached at #{@quote.email}
+
+            The selected product line is #{@quote.product_line.capitalize} for #{@quote.building_type.capitalize} building.
+
+            The cost for the #{@quote.required_shafts} shafts needed is: #{@quote.sub_total}.
+
+            Installations fees are #{@quote.installation_fee}
+            
+            The total cost is  #{@quote.total}."
+        },
+        :requester => {
+            "name": @quote.contact_name,
+            # "email": @quote.email
+        },
+        :priority => "high",
+        :type => "task"
+        )
+    end
 
 
    #===================================================================================================

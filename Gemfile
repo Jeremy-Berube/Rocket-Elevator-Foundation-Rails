@@ -36,8 +36,6 @@ gem 'google_maps_service'
 gem 'gmaps4rails'
 gem 'geocoder'
 
-# Weather
-gem 'open-weather'
 
 # ADMIN SECTION
 gem 'rails_admin', '~> 2.0'
@@ -132,8 +130,13 @@ gem 'phonelib'
 #Zendesk
 gem 'zendesk_api'
 
+
+#spotify
+gem 'rspotify'
+
 #dropbox
 gem 'dropbox_api'
+
 
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
