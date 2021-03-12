@@ -135,3 +135,5 @@ gem 'dropbox_api'
 
 gem 'ed25519'
 gem 'bcrypt_pbkdf'
+
+gem 'rspotify'
