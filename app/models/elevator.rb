@@ -7,6 +7,7 @@ class Elevator < ApplicationRecord
     belongs_to :column
     after_update :send_sms
     around_update :elevator_status_is_changed
+    has_many :tableinterventions
 
     #Call method 'message' when an elevator status changes to 'intervention'
     def send_sms

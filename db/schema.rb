@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_143316) do
+ActiveRecord::Schema.define(version: 2021_03_22_191948) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "type_of_address"
@@ -219,6 +219,29 @@ ActiveRecord::Schema.define(version: 2021_03_11_143316) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tableinterventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "author", null: false
+    t.datetime "intervention_start"
+    t.datetime "intervention_end"
+    t.string "result", default: "Incomplete"
+    t.string "report"
+    t.string "status", default: "Pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "customers_id", null: false
+    t.bigint "buildings_id", null: false
+    t.bigint "batteries_id"
+    t.bigint "columns_id"
+    t.bigint "elevators_id"
+    t.bigint "employees_id"
+    t.index ["batteries_id"], name: "index_tableinterventions_on_batteries_id"
+    t.index ["buildings_id"], name: "index_tableinterventions_on_buildings_id"
+    t.index ["columns_id"], name: "index_tableinterventions_on_columns_id"
+    t.index ["customers_id"], name: "index_tableinterventions_on_customers_id"
+    t.index ["elevators_id"], name: "index_tableinterventions_on_elevators_id"
+    t.index ["employees_id"], name: "index_tableinterventions_on_employees_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -244,4 +267,10 @@ ActiveRecord::Schema.define(version: 2021_03_11_143316) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "tableinterventions", "batteries", column: "batteries_id"
+  add_foreign_key "tableinterventions", "buildings", column: "buildings_id"
+  add_foreign_key "tableinterventions", "columns", column: "columns_id"
+  add_foreign_key "tableinterventions", "customers", column: "customers_id"
+  add_foreign_key "tableinterventions", "elevators", column: "elevators_id"
+  add_foreign_key "tableinterventions", "employees", column: "employees_id"
 end
