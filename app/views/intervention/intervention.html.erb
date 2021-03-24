@@ -1,0 +1,157 @@
+<section class="page-header page-header-xlg parallax parallax-4" style = "background-image: url(<%= asset_path("Rocket_Elevator_Assets/Quote/AdobeStock_556688421.jpg") %>)">
+<div class="overlay dark-4"><!-- dark overlay [1 to 9 opacity] --></div>  
+</section>                 
+<div class="container">
+    <div class="heading-title heading-dotted text-center">
+        <h1>Intervention</h1>
+    </div>
+    <form class="form-inline" action="/intervention" method="post" id ="intervention_form">
+        <div class="row no-gutters wow slideInUp" data-wow-duration="1s">
+            <div class="col-md-6  home-form">
+                <%= form_with(model:@intervention) do |f|%>
+                    <div id="customer" class="col-md-5">
+                    <%= f.label :customer %>
+                    <%= f.collection_select :customer_id, Customer.all.collect, :id, :company_name, include_blank: true %>
+                    </div>
+                    <div id="building" class="col-md-5">
+                    <%= f.label :building %>
+                    <%= f.collection_select :building_id, Building.all.collect, :id, :id, include_blank: true %>
+                    </div>
+                    <div id="battery" class="col-md-5">
+                    <%= f.label :battery %>
+                    <%= f.collection_select :battery_id, Battery.all.collect, :id, :id, include_blank: true %>
+                    </div>
+                    <div id="column" class="col-md-5">
+                    <%= f.label :column %>
+                    <%= f.collection_select :column_id, Column.all.collect, :id, :id, include_blank: true %>
+                    </div>
+                    <div id="elevator" class="col-md-5">
+                    <%= f.label :elevator %>
+                    <%= f.collection_select :elevator_id, Elevator.all.collect, :id, :id, include_blank: true %>
+                    </div>
+                    <div id="employee" class="col-md-5">
+                    <%= f.label :employee %>
+                    <%= f.collection_select :employee_id, Employee.all.collect, :id, :id, include_blank: true %>
+                    </div>
+                    <div class="col-md-12">
+					<%= f.label :description %>
+					<textarea required maxlength="10000" rows="2" class="form-control" name="description" id="description"></textarea>
+					</div>
+                    <br><%= f.submit%>
+                <% end %>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+});
+//Building
+    $("#customer_id").change(function(){
+    $("customer").show();
+    var customer = $(this).val();
+    $.ajax({
+        url: "/update_buildings",
+        method: "GET",  
+        dataType: "json",
+        data: {customer_id: customer},
+        error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+        },
+        success: function (response) {
+
+            console.log("Response: ", response);
+
+            $("#building_id").empty();
+            $("#building_id").append('<option>Select</option>');
+            // console.log('here')
+
+            for (var i=0; i< response['building'].length; i++) {
+                $("#building_id").append('<option value=' + response['building'][i].id +'>'+ response['building'][i].id +'</option>');
+                // console.log('it fucking works')
+            }
+        }
+    });
+});
+// Battery
+    $("#building_id").change(function(){
+        $("building").show();
+        var building = $(this).val();
+        $.ajax({
+            url: "/update_batteries",
+            method: "GET",  
+            dataType: "json",
+            data: {building_id: building},
+            error: function (xhr, status, error) {
+            console.error('AJAX Error: ' + status + error);
+            },
+            success: function (response) {
+
+                console.log("Response: ", response);
+
+                $("#battery_id").empty();
+                $("#battery_id").append('<option>Select</option>');
+                // console.log('here')
+
+                for (var i=0; i< response['battery'].length; i++) {
+                    $("#battery_id").append('<option value=' + response['battery'][i].id +'>'+ response['battery'][i].id +'</option>');
+                    // console.log('it fucking works times 2')
+                }
+            }
+        });
+    });
+// Column
+    $("#battery_id").change(function(){
+        $("battery").show();
+        var battery = $(this).val();
+        $.ajax({
+            url: "/update_columns",
+            method: "GET",  
+            dataType: "json",
+            data: {battery_id: battery},
+            error: function (xhr, status, error) {
+            console.error('AJAX Error: ' + status + error);
+            },
+            success: function (response) {
+
+                console.log("Response: ", response);
+
+                $("#column_id").empty();
+                $("#column_id").append('<option>Select</option>');
+                // console.log('here')
+
+                for (var i=0; i< response['column'].length; i++) {
+                    $("#column_id").append('<option value=' + response['column'][i].id +'>'+ response['column'][i].id +'</option>');
+                    console.log('it fucking works times 3')
+                }
+            }
+        });
+    });
+// Elevator
+        $("#column_id").change(function(){
+        $("column").show();
+        var column = $(this).val();
+        $.ajax({
+            url: "/update_elevators",
+            method: "GET",  
+            dataType: "json",
+            data: {column_id: column},
+            error: function (xhr, status, error) {
+            console.error('AJAX Error: ' + status + error);
+            },
+            success: function (response) {
+
+                console.log("Response: ", response);
+
+                $("#elevator_id").empty();
+                $("#elevator_id").append('<option>Select</option>');
+                // console.log('here')
+
+                for (var i=0; i< response['elevator'].length; i++) {
+                    $("#elevator_id").append('<option value=' + response['elevator'][i].id +'>'+ response['elevator'][i].id +'</option>');
+                    console.log('it fucking works times 4')
+                }
+            }
+        });
+    });
+</script>

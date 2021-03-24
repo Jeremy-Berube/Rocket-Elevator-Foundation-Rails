@@ -181,6 +181,29 @@ ActiveRecord::Schema.define(version: 2021_03_22_191948) do
     t.index ["user_id"], name: "index_employees_on_user_id"
   end
 
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "author", null: false
+    t.datetime "intervention_start"
+    t.datetime "intervention_end"
+    t.string "result", default: "Incomplete"
+    t.text "report"
+    t.string "status", default: "Pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "customers_id", null: false
+    t.bigint "buildings_id", null: false
+    t.bigint "batteries_id"
+    t.bigint "columns_id"
+    t.bigint "elevators_id"
+    t.bigint "employees_id"
+    t.index ["batteries_id"], name: "index_interventions_on_batteries_id"
+    t.index ["buildings_id"], name: "index_interventions_on_buildings_id"
+    t.index ["columns_id"], name: "index_interventions_on_columns_id"
+    t.index ["customers_id"], name: "index_interventions_on_customers_id"
+    t.index ["elevators_id"], name: "index_interventions_on_elevators_id"
+    t.index ["employees_id"], name: "index_interventions_on_employees_id"
+  end
+
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "full_name_of_contact"
     t.string "company_name"
@@ -219,29 +242,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_191948) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tableinterventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "author", null: false
-    t.datetime "intervention_start"
-    t.datetime "intervention_end"
-    t.string "result", default: "Incomplete"
-    t.string "report"
-    t.string "status", default: "Pending"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "customers_id", null: false
-    t.bigint "buildings_id", null: false
-    t.bigint "batteries_id"
-    t.bigint "columns_id"
-    t.bigint "elevators_id"
-    t.bigint "employees_id"
-    t.index ["batteries_id"], name: "index_tableinterventions_on_batteries_id"
-    t.index ["buildings_id"], name: "index_tableinterventions_on_buildings_id"
-    t.index ["columns_id"], name: "index_tableinterventions_on_columns_id"
-    t.index ["customers_id"], name: "index_tableinterventions_on_customers_id"
-    t.index ["elevators_id"], name: "index_tableinterventions_on_elevators_id"
-    t.index ["employees_id"], name: "index_tableinterventions_on_employees_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -267,10 +267,10 @@ ActiveRecord::Schema.define(version: 2021_03_22_191948) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
-  add_foreign_key "tableinterventions", "batteries", column: "batteries_id"
-  add_foreign_key "tableinterventions", "buildings", column: "buildings_id"
-  add_foreign_key "tableinterventions", "columns", column: "columns_id"
-  add_foreign_key "tableinterventions", "customers", column: "customers_id"
-  add_foreign_key "tableinterventions", "elevators", column: "elevators_id"
-  add_foreign_key "tableinterventions", "employees", column: "employees_id"
+  add_foreign_key "interventions", "batteries", column: "batteries_id"
+  add_foreign_key "interventions", "buildings", column: "buildings_id"
+  add_foreign_key "interventions", "columns", column: "columns_id"
+  add_foreign_key "interventions", "customers", column: "customers_id"
+  add_foreign_key "interventions", "elevators", column: "elevators_id"
+  add_foreign_key "interventions", "employees", column: "employees_id"
 end

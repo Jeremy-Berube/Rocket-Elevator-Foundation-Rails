@@ -2,7 +2,7 @@ class Customer < ApplicationRecord
     belongs_to :user
     belongs_to :address
     has_many :buildings
-    has_many :tableinterventions
+    has_many :interventions
 
     after_create :send_attachment_to_dropbox
     after_update :send_attachment_to_dropbox
