@@ -10,32 +10,32 @@
             <div class="col-md-6  home-form">
                 <%= form_with(model:@intervention) do |f|%>
                     <div id="customer" class="col-md-5">
-                    <%= f.label :customer %>
-                    <%= f.collection_select :customer_id, Customer.all.collect, :id, :company_name, include_blank: true %>
+                        <%= f.label :customer %>
+                        <%= f.collection_select :customer_id, Customer.all.collect, :id, :company_name, include_blank: true %>
                     </div>
                     <div id="building" class="col-md-5">
-                    <%= f.label :building %>
-                    <%= f.collection_select :building_id, Building.all.collect, :id, :id, include_blank: true %>
+                        <%= f.label :building %>
+                        <%= f.collection_select :building_id, Building.all.collect, :id, :id, include_blank: true %>
                     </div>
                     <div id="battery" class="col-md-5">
-                    <%= f.label :battery %>
-                    <%= f.collection_select :battery_id, Battery.all.collect, :id, :id, include_blank: true %>
+                        <%= f.label :battery %>
+                        <%= f.collection_select :battery_id, Battery.all.collect, :id, :id, include_blank: true %>
                     </div>
                     <div id="column" class="col-md-5">
-                    <%= f.label :column %>
-                    <%= f.collection_select :column_id, Column.all.collect, :id, :id, include_blank: true %>
+                        <%= f.label :column %>
+                        <%= f.collection_select :column_id, Column.all.collect, :id, :id, include_blank: true %>
                     </div>
                     <div id="elevator" class="col-md-5">
-                    <%= f.label :elevator %>
-                    <%= f.collection_select :elevator_id, Elevator.all.collect, :id, :id, include_blank: true %>
+                        <%= f.label :elevator %>
+                        <%= f.collection_select :elevator_id, Elevator.all.collect, :id, :id, include_blank: true %>
                     </div>
                     <div id="employee" class="col-md-5">
-                    <%= f.label :employee %>
-                    <%= f.collection_select :employee_id, Employee.all.collect, :id, :id, include_blank: true %>
+                        <%= f.label :employee %>
+                        <%= f.collection_select :employee_id, Employee.all.collect, :id, :id, include_blank: true %>
                     </div>
                     <div class="col-md-12">
-					<%= f.label :description %>
-					<textarea required maxlength="10000" rows="2" class="form-control" name="description" id="description"></textarea>
+                        <%= f.label :description %>
+                        <textarea required maxlength="10000" rows="2" class="form-control" name="description" id="description"></textarea>
 					</div>
                     <br><%= f.submit%>
                 <% end %>
@@ -44,11 +44,14 @@
     </form>
 </div>
 
+
+
 <script>
-});
+    $(document).ready(function(){
+        $("#building, #elevator, #battery, #column").hide();
+    });
 //Building
     $("#customer_id").change(function(){
-    $("customer").show();
     var customer = $(this).val();
     $.ajax({
         url: "/update_buildings",
@@ -72,10 +75,13 @@
             }
         }
     });
+ 
+    $("#building").show();
+    $("#elevator, #battery, #column").hide();
+    
 });
 // Battery
     $("#building_id").change(function(){
-        $("building").show();
         var building = $(this).val();
         $.ajax({
             url: "/update_batteries",
@@ -99,10 +105,11 @@
                 }
             }
         });
+    $("#battery").show();
+    $("#elevator, #column").hide();
     });
 // Column
     $("#battery_id").change(function(){
-        $("battery").show();
         var battery = $(this).val();
         $.ajax({
             url: "/update_columns",
@@ -122,14 +129,15 @@
 
                 for (var i=0; i< response['column'].length; i++) {
                     $("#column_id").append('<option value=' + response['column'][i].id +'>'+ response['column'][i].id +'</option>');
-                    console.log('it fucking works times 3')
+                    // console.log('it fucking works times 3')
                 }
             }
         });
+    $("#column").show();
+    $("#elevator").hide();
     });
 // Elevator
         $("#column_id").change(function(){
-        $("column").show();
         var column = $(this).val();
         $.ajax({
             url: "/update_elevators",
@@ -149,9 +157,10 @@
 
                 for (var i=0; i< response['elevator'].length; i++) {
                     $("#elevator_id").append('<option value=' + response['elevator'][i].id +'>'+ response['elevator'][i].id +'</option>');
-                    console.log('it fucking works times 4')
+                    // console.log('it fucking works times 4')
                 }
             }
         });
+    $("#elevator").show();
     });
 </script>

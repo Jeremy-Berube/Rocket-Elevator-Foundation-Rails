@@ -17,30 +17,62 @@ class InterventionController < ApplicationController
     end
 
     def create 
-        puts params
-        intervention = Intervention.new
-        intervention.author = current_user.id
-        intervention.report = params[:description]
-        intervention.customers_id = params[:customer_id]
-        intervention.buildings_id = params[:building_id]
+        
+        @intervention = Intervention.new
+        @intervention.author = current_user.id
+        @intervention.report = params[:description]
+        @intervention.customers_id = params[:customer_id]
+        @intervention.buildings_id = params[:building_id]
 
-        # if @batteryList.status == 'Intervention'
-        #     intervention.batteries_id = params[:battery_id]
+        # @batteryList.each do |b|
+        #     puts b
+        #     if b.status == 'intervention'
+        #         @intervention.batteries_id = params[:battery_id]
+        #     end
         # end
 
         # if @columnList.status == 'Intervention'
-        #     intervention.columns_id = params[:column_id]
+        #     @intervention.columns_id = params[:column_id]
         # end
 
         # if @elevatorList.status == 'Intervention'        
-        # intervention.elevators_id = params[:elevator_id]
+        # @intervention.elevators_id = params[:elevator_id]
         # end 
+        @intervention.batteries_id = params[:battery_id]
+        @intervention.columns_id = params[:column_id]
+        @intervention.elevators_id = params[:elevator_id]
+        @intervention.employees_id = params[:employee_id]
+        @intervention.save!
 
-        intervention.employees_id = params[:employee_id]
-        intervention.save!
-
-        if intervention.save! 
+        if @intervention.save! 
             redirect_back fallback_location: intervention_path, notice:"Your intervention was successfully stored"
+            zendesk_lead_ticket()
         end
+    end
+    require 'zendesk_api'
+
+    def zendesk_lead_ticket
+        client = ZendeskAPI::Client.new do |config|
+            config.url = ENV['ZENDESK_URL']
+            config.username = ENV['ZENDESK_USERNAME']
+            config.token = ENV['ZENDESK_TOKEN']
+        end
+        ZendeskAPI::Ticket.create!(client, 
+        :subject => "Intervention Needed",
+        :comment => {
+            :value => 
+            "From employee ID: #{current_user.id}
+            For customer ID: #{params[:customer_id]}
+            Intervention location:\n
+            Building: #{params[:building_id]}
+            Battery: #{params[:battery_id]}
+            Column: #{params[:column_id]}
+            Elevator: #{params[:elevator_id]}
+            Employee assign: #{params[:employee_id]}\n\n
+            Projet Description : #{params[:description]}"
+        },
+        :priority => "urgent",
+        :type => "task"
+        )
     end
 end
