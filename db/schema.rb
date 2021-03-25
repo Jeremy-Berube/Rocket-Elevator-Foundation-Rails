@@ -190,18 +190,18 @@ ActiveRecord::Schema.define(version: 2021_03_22_191948) do
     t.string "status", default: "Pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "customers_id", null: false
-    t.bigint "buildings_id", null: false
-    t.bigint "batteries_id"
-    t.bigint "columns_id"
-    t.bigint "elevators_id"
-    t.bigint "employees_id"
-    t.index ["batteries_id"], name: "index_interventions_on_batteries_id"
-    t.index ["buildings_id"], name: "index_interventions_on_buildings_id"
-    t.index ["columns_id"], name: "index_interventions_on_columns_id"
-    t.index ["customers_id"], name: "index_interventions_on_customers_id"
-    t.index ["elevators_id"], name: "index_interventions_on_elevators_id"
-    t.index ["employees_id"], name: "index_interventions_on_employees_id"
+    t.bigint "customer_id", null: false
+    t.bigint "building_id", null: false
+    t.bigint "battery_id"
+    t.bigint "column_id"
+    t.bigint "elevator_id"
+    t.bigint "employee_id"
+    t.index ["battery_id"], name: "index_interventions_on_battery_id"
+    t.index ["building_id"], name: "index_interventions_on_building_id"
+    t.index ["column_id"], name: "index_interventions_on_column_id"
+    t.index ["customer_id"], name: "index_interventions_on_customer_id"
+    t.index ["elevator_id"], name: "index_interventions_on_elevator_id"
+    t.index ["employee_id"], name: "index_interventions_on_employee_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -267,10 +267,10 @@ ActiveRecord::Schema.define(version: 2021_03_22_191948) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
-  add_foreign_key "interventions", "batteries", column: "batteries_id"
-  add_foreign_key "interventions", "buildings", column: "buildings_id"
-  add_foreign_key "interventions", "columns", column: "columns_id"
-  add_foreign_key "interventions", "customers", column: "customers_id"
-  add_foreign_key "interventions", "elevators", column: "elevators_id"
-  add_foreign_key "interventions", "employees", column: "employees_id"
+  add_foreign_key "interventions", "batteries"
+  add_foreign_key "interventions", "buildings"
+  add_foreign_key "interventions", "columns"
+  add_foreign_key "interventions", "customers"
+  add_foreign_key "interventions", "elevators"
+  add_foreign_key "interventions", "employees"
 end

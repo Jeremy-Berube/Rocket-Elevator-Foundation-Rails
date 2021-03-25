@@ -21,8 +21,8 @@ class InterventionController < ApplicationController
         @intervention = Intervention.new
         @intervention.author = current_user.id
         @intervention.report = params[:description]
-        @intervention.customers_id = params[:customer_id]
-        @intervention.buildings_id = params[:building_id]
+        @intervention.customer_id = params[:customer_id]
+        @intervention.building_id = params[:building_id]
 
         # @batteryList.each do |b|
         #     puts b
@@ -38,10 +38,10 @@ class InterventionController < ApplicationController
         # if @elevatorList.status == 'Intervention'        
         # @intervention.elevators_id = params[:elevator_id]
         # end 
-        @intervention.batteries_id = params[:battery_id]
-        @intervention.columns_id = params[:column_id]
-        @intervention.elevators_id = params[:elevator_id]
-        @intervention.employees_id = params[:employee_id]
+        @intervention.battery_id = params[:battery_id]
+        @intervention.column_id = params[:column_id]
+        @intervention.elevator_id = params[:elevator_id]
+        @intervention.employee_id = params[:employee_id]
         @intervention.save!
 
         if @intervention.save! 
