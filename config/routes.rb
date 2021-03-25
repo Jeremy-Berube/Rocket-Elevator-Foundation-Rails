@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "residential" => "pages#residential"
   get "commercial" => "pages#commercial"
   get "quotes" => "pages#quote"
+  get "/intervention" => "intervention#intervention"
 
   get "/index" => "pages#index"
 
@@ -29,4 +30,11 @@ Rails.application.routes.draw do
   # /leads is the action from the form in index.html.erb
   post "/leads" => "leads#create"
 
+  #intervention
+  resources :interventions
+  get 'update_buildings', to: 'intervention#update_buildings'
+  get 'update_batteries', to: 'intervention#update_batteries'
+  get 'update_columns', to: 'intervention#update_columns'
+  get 'update_elevators', to: 'intervention#update_elevators'
+  post '/intervention', to: 'intervention#create'
 end

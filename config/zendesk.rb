@@ -3,16 +3,16 @@ require 'zendesk_api'
 $client = ZendeskAPI::Client.new do |config|
   # Mandatory:
 
-  config.url = "https://rockelevators.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
+  config.url = "https://rocketelevator9426.zendesk.com/api/v2" # e.g. https://mydesk.zendesk.com/api/v2
 
   # Basic / Token Authentication
-  config.username = "gabriel.rioux@hotmail.com"
+  config.username = "sylfe94@hotmail.com"
 
   # Choose one of the following depending on your authentication choice
-  config.token = "yrqNfv1cIJ8oGNksCECBYHHRq5lRkNimaXefVILzJ"
+  config.token = "IKDtYaHbOf0xLwyqaqylWJYg22PfwQokrUFpZsQ9"
 
   # OAuth Authentication
-  config.access_token = "11a1501d3b7ac0c5d073d3d03be8a7caa84755b9e9a304ef4bab58116fb854c6"
+  config.access_token = "7c1127484b4634af0996cc5084606466f66ff6662512b35c566053ed8d6dac6f"
 
   # Optional:
 
