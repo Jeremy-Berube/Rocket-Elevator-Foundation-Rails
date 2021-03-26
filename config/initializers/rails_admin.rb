@@ -45,7 +45,7 @@ RailsAdmin.config do |config|
     delete
     #show_in_app
     # watson
-    # map
+    map
     # starwars
     ## With an audit adapter, you can add:
     # history_index
