@@ -11,15 +11,15 @@
                 <%= form_with(model:@intervention) do |f|%>
                     <div id="customer" class="col-md-5">
                         <%= f.label :customer %>
-                        <%= f.collection_select :customer_id, Customer.all.collect, :id, :company_name, include_blank: true %>
+                        <%= f.collection_select :customer_id, Customer.all.collect, :id, :company_name, include_blank: true, required: true %>
                     </div>
                     <div id="building" class="col-md-5">
                         <%= f.label :building %>
-                        <%= f.collection_select :building_id, Building.all.collect, :id, :id, include_blank: true %>
+                        <%= f.collection_select :building_id, Building.all.collect, :id, :id, include_blank: true, required: true %>
                     </div>
                     <div id="battery" class="col-md-5">
                         <%= f.label :battery %>
-                        <%= f.collection_select :battery_id, Battery.all.collect, :id, :id, include_blank: true %>
+                        <%= f.collection_select :battery_id, Battery.all.collect, :id, :id, include_blank: true, required: true %>
                     </div>
                     <div id="column" class="col-md-5">
                         <%= f.label :column %>
@@ -66,7 +66,7 @@
             console.log("Response: ", response);
 
             $("#building_id").empty();
-            $("#building_id").append('<option>Select</option>');
+            $("#building_id").append('<option value="+""+">Select</option>');
             // console.log('here')
 
             for (var i=0; i< response['building'].length; i++) {
@@ -96,7 +96,7 @@
                 console.log("Response: ", response);
 
                 $("#battery_id").empty();
-                $("#battery_id").append('<option>Select</option>');
+                $("#battery_id").append('<option value="">Select</option>');
                 // console.log('here')
 
                 for (var i=0; i< response['battery'].length; i++) {
@@ -124,7 +124,7 @@
                 console.log("Response: ", response);
 
                 $("#column_id").empty();
-                $("#column_id").append('<option>Select</option>');
+                $("#column_id").append('<option value="">Select</option>');
                 // console.log('here')
 
                 for (var i=0; i< response['column'].length; i++) {
@@ -152,7 +152,7 @@
                 console.log("Response: ", response);
 
                 $("#elevator_id").empty();
-                $("#elevator_id").append('<option>Select</option>');
+                $("#elevator_id").append('<option value="">Select</option>');
                 // console.log('here')
 
                 for (var i=0; i< response['elevator'].length; i++) {
