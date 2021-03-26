@@ -1,9 +1,9 @@
-<h1>Watson</h1>
+<%# <h1>Watson</h1>
 <button type="submit" id="watson" class="btn btn-primary">SUMMARY</button>
 
 <audio id="audio">
     <source src="<%= audio_path 'watson.mp3'%>">
-</audio>
+<%# </audio>
 
 <script> 
     $('#watson').on('click', ()=>{
@@ -11,4 +11,4 @@
         audio.paused? audio.play():audio.pause()
         audio.paused? $('#watson').text('PLAY'):$('#watson').text('PAUSE')
     })
-</script>
+</script> %> 

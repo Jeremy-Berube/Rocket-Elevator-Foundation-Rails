@@ -1,13 +1,13 @@
 
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API'] %>&callback=initMap&libraries=&v=weekly" defer></script>
+<%# <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> %>
+<%# <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API'] &callback=initMap&libraries=&v=weekly" defer></script> %>
 
 
-<div id="map" style='width: 800px; height: 400px;'></div>  
+<%# <div id="map" style='width: 800px; height: 400px;'></div>   %>
 
 
-<script type="text/javascript">
+<%# <script type="text/javascript"> 
   let map;
 
   function initMap() {
@@ -21,7 +21,7 @@
   function setMarkers(map) {
 
     const datas = <%=raw @data_recolector %>
-    console.log(datas)
+    <%# console.log(datas)
     
     for (let i = 0; i < datas.length; i++) {
       const data = datas[i];
@@ -44,4 +44,4 @@
     }
   }
 
-</script>
+</script> %> 
