@@ -16,6 +16,8 @@ default: &default
   username: codeboxx
   password: Codeboxx1!
   socket: /var/run/mysqld/mysqld.sock
+  Host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  port: 3306
 
 default: &postgresql
   adapter: postgresql
