@@ -61,8 +61,8 @@ class InterventionController < ApplicationController
         :subject => "Intervention Needed",
         :comment => {
             :value => 
-            "From employee ID:  #{Employee.find_by(user_id: current_user.id).first_name} #{Employee.find_by(user_id: current_user.id).last_name}
-            For customer ID: #{Customer.find(params[:customer_id]).company_name}
+            "From employee:  #{Employee.find_by(user_id: current_user.id).first_name} #{Employee.find_by(user_id: current_user.id).last_name}
+            For customer: #{Customer.find(params[:customer_id]).company_name}
             Intervention location:\n
             Building: #{params[:building_id]}
             Battery: #{params[:battery_id]}
