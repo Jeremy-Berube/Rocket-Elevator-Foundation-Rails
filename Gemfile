@@ -143,3 +143,16 @@ gem 'bcrypt_pbkdf'
 
 # Weather
 gem 'open-weather'
+
+# Webmock
+  group :test do
+        gem "webmock"
+    end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.0'
+end
+
+gem "httparty"
+
+gem 'responders'
