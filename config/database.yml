@@ -1,16 +1,16 @@
 development:
-  database: JeremyBerube
+  database: Database-1
   adapter: mysql2
   encoding: utf8
-  username: codeboxx
-  password: Codeboxx1!
-  host: codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  username: dbmasteruser
+  password: ~SZLQ,b(Tm3]P-cZ^IK$u=NC*-ioG1U`
+  host: ls-3eb64a5ec2c4c6692e7b9c31c5bb2b3cd32fc925.cdhud13vcoxa.ca-central-1.rds.amazonaws.com
   port: 3306
 
 warehouse_development:
-  database: warehouse_development
+  database: Postgres
   adapter: postgresql
-  host: codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com
+  host: ls-cd1912c230c13910424ecc5cfc33dc4d4e159db4.cdhud13vcoxa.ca-central-1.rds.amazonaws.com
   port: 5432
-  username: codeboxx
-  password: Codeboxx1!
+  username: dbmasteruser
+  password: (&Q{c8E~w#51r3UDlilOtG56Se1r7s4&

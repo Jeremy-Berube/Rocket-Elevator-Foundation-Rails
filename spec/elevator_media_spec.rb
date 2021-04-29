@@ -9,10 +9,6 @@ RSpec.describe ElevatorMedia::Streamer do
             
             streamer = ElevatorMedia::Streamer.new()
 
-            it "initialized Streamer" do
-                expect(streamer).to be_a(ElevatorMedia::Streamer)
-            end
-
             it "Randommizer" do 
                 r = streamer.pokemonRandomizer()
                 expect(r).to be_between(1 , 478)
